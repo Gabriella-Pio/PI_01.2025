@@ -5,9 +5,11 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.text.DecimalFormat;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,8 +21,14 @@ public class EscolherPoltronaController {
     @FXML
     private VBox plateiaASection, plateiaBSection, frisaEsquerdaSection, frisaDireitaSection, camaroteSection, balcaoNobreSection;
 
+    @FXML
+    private Label labelTotal;
+
     private int quantidadeIngressos;
     private final Set<String> poltronasSelecionadas = new HashSet<>();
+    private double total = 0.0;
+
+    private final DecimalFormat formatador = new DecimalFormat("R$ #,##0.00");
 
     @FXML
     public void initialize() {
@@ -31,16 +39,10 @@ public class EscolherPoltronaController {
         configurarSecao(balcaoNobreSection, "BN", 50, 18, 250.00);
     }
 
-    /**
-     * Define a quantidade de ingressos informada na tela anterior.
-     */
     public void setQuantidadeIngressos(int quantidade) {
         this.quantidadeIngressos = quantidade;
     }
 
-    /**
-     * Configura uma seção genérica de poltronas.
-     */
     private void configurarSecao(VBox section, String prefixo, int totalPoltronas, int poltronasPorLinha, double preco) {
         for (int i = 1; i <= Math.ceil((double) totalPoltronas / poltronasPorLinha); i++) {
             HBox linha = new HBox(10);
@@ -100,9 +102,6 @@ public class EscolherPoltronaController {
         camaroteSection.getChildren().add(layoutCamarotes);
     }
 
-    /**
-     * Cria um botão representando uma poltrona.
-     */
     private void criarBotao(HBox linha, String poltronaId, double preco) {
         Button botaoPoltrona = new Button(poltronaId);
         botaoPoltrona.setStyle("-fx-background-color: #ede0d4; -fx-text-fill: #532920; -fx-font-size: 14px; -fx-cursor: hand;");
@@ -110,16 +109,15 @@ public class EscolherPoltronaController {
         linha.getChildren().add(botaoPoltrona);
     }
 
-    /**
-     * Ação ao selecionar uma poltrona.
-     */
     private void selecionarPoltrona(Button botao, String poltronaId, double preco) {
         if (poltronasSelecionadas.contains(poltronaId)) {
             poltronasSelecionadas.remove(poltronaId);
+            total -= preco;
             botao.setStyle("-fx-background-color: #ede0d4; -fx-text-fill: #532920; -fx-font-size: 14px; -fx-cursor: hand;");
         } else {
             if (poltronasSelecionadas.size() < quantidadeIngressos) {
                 poltronasSelecionadas.add(poltronaId);
+                total += preco;
                 botao.setStyle("-fx-background-color: #532920; -fx-text-fill: #ede0d4; -fx-font-size: 14px; -fx-cursor: hand;");
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -129,5 +127,16 @@ public class EscolherPoltronaController {
                 alert.showAndWait();
             }
         }
+        atualizarTotal();
+    }
+
+    private void atualizarTotal() {
+        labelTotal.setText(formatador.format(total));
+    }
+
+    @FXML
+    private void irParaTelaPreencherDados(ActionEvent event) {
+        // Implemente a lógica para mudar para a próxima tela
+        System.out.println("Indo para tela de preenchimento de CPF e Data de Nascimento");
     }
 }

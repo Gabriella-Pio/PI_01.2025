@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static br.teatroabc.controllers.Controller.screenHistory;
+import static br.teatroabc.controllers.NavigationController.screenHistory;
 
 public class DetalhesPecaController {
 

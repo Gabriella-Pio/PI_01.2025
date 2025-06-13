@@ -14,14 +14,23 @@
         <fx:include source="NavBar.fxml" />
     </VBox>
 
+    <!-- Título e Total -->
+    <VBox alignment="CENTER" spacing="10">
+        <!-- Título -->
+        <Label text="Escolha sua Poltrona" styleClass="title-primary" />
+
+        <!-- Valor Total -->
+        <HBox alignment="CENTER" spacing="10">
+            <Label text="Total: " styleClass="title-secondary" />
+            <Label fx:id="labelTotal" text="R$ 0,00" styleClass="title-secondary" />
+        </HBox>
+    </VBox>
+
     <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 10 20 20 20;">
         <VBox spacing="20" alignment="TOP_CENTER" style="-fx-background-color: #f2eee9; -fx-padding: 0 200 200 200;">
-            <!-- Título -->
-            <Label text="Escolha sua Poltrona" styleClass="title-primary" />
-
             <!-- Plateia A -->
             <VBox fx:id="plateiaASection" alignment="CENTER" spacing="10" styleClass="section-box">
-                <Label text="Plateia B - R$ 40.00" styleClass="text-poltronas" />
+                <Label text="Plateia A - R$ 40.00" styleClass="text-poltronas" />
             </VBox>
 
             <!-- Layout Principal -->
@@ -51,5 +60,10 @@
             </VBox>
         </VBox>
     </ScrollPane>
+
+    <!-- Botão Avançar -->
+    <HBox alignment="CENTER" spacing="10">
+        <Button text="Avançar" styleClass="button-primary" onAction="#irParaTelaPreencherDados" />
+    </HBox>
 
 </VBox>
