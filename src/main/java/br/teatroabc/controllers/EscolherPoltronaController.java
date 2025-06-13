@@ -13,6 +13,8 @@ import java.text.DecimalFormat;
 import java.util.HashSet;
 import java.util.Set;
 
+import static br.teatroabc.controllers.NavigationController.switchToTela;
+
 public class EscolherPoltronaController {
 
     @FXML
@@ -135,8 +137,7 @@ public class EscolherPoltronaController {
     }
 
     @FXML
-    private void irParaTelaPreencherDados(ActionEvent event) {
-        // Implemente a lógica para mudar para a próxima tela
-        System.out.println("Indo para tela de preenchimento de CPF e Data de Nascimento");
+    public void switchToConfirmar(ActionEvent event) {
+        NavigationController.switchToTela("/Confirmar.fxml", event);
     }
 }

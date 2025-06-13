@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Confirmar"
-            prefHeight="400.0" prefWidth="600.0" >
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="TOP_CENTER" spacing="20"
+      stylesheets="@style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.Controller">
 
-</AnchorPane>
+    <!-- Navbar -->
+    <VBox styleClass="padding-large">
+        <fx:include source="NavBar.fxml" />
+    </VBox>
+
+    <!-- Título da Tela -->
+    <Label fx:id="labelTitulo" text="Confirmar Compra" styleClass="title-primary"/>
+
+    <!-- Caixa Central -->
+    <VBox fx:id="mainBox" alignment="CENTER" maxWidth="700" maxHeight="800" styleClass="background-box, padding-large">
+
+        <!-- Campos de Cadastro -->
+        <VBox fx:id="cadastroPane" alignment="CENTER" styleClass="background-box">
+            <TextField fx:id="txtCPF" promptText="CPF" styleClass="text-forms, background-form"/>
+            <DatePicker fx:id="dateNascimento" promptText="Data de Nascimento" styleClass="text-forms, background-form"/>
+            <Button fx:id="btnConfirmar" text="Comprar" styleClass="button-primary" onAction="#confirmarCompra" />
+        </VBox>
+    </VBox>
+</VBox>
+

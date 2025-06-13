@@ -63,7 +63,7 @@
 
     <!-- Botão Avançar -->
     <HBox alignment="CENTER" spacing="10">
-        <Button text="Avançar" styleClass="button-primary" onAction="#irParaTelaPreencherDados" />
+        <Button text="Avançar" styleClass="button-primary" onAction="#switchToConfirmar" />
     </HBox>
 
 </VBox>
