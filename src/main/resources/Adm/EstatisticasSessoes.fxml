@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="TOP_CENTER" spacing="20"
+      stylesheets="@../style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.Adm.EstatisticasSessoesController">
+
+    <!-- Navbar -->
+    <VBox styleClass="padding-large">
+        <fx:include source="/Adm/AdminNavBar.fxml" />
+    </VBox>
+
+    <!-- Título -->
+    <Label text="Estatísticas de Sessões" styleClass="title-primary" />
+
+    <!-- Conteúdo Principal -->
+    <VBox alignment="CENTER" spacing="20">
+        <!-- Informações Principais -->
+        <HBox alignment="CENTER" spacing="50">
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="Maior Ocupação" styleClass="title-secondary" />
+                <Label fx:id="labelMaiorOcupacao" text="Sessão X: 90%" styleClass="text-body" />
+            </VBox>
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="Menor Ocupação" styleClass="title-secondary" />
+                <Label fx:id="labelMenorOcupacao" text="Sessão Y: 20%" styleClass="text-body" />
+            </VBox>
+        </HBox>
+
+        <!-- Gráfico de Ocupação -->
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="Ocupação por Sessão" styleClass="title-secondary" />
+            <BarChart fx:id="graficoOcupacao" title="Ocupação por Sessão" animated="true">
+                <xAxis>
+                    <CategoryAxis fx:id="eixoX" label="Sessões" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="eixoY" label="Porcentagem de Ocupação (%)" />
+                </yAxis>
+            </BarChart>
+        </VBox>
+
+        <!-- Resumo Geral -->
+        <Label text="Resumo Geral de Sessões" styleClass="title-secondary" />
+        <TableView fx:id="tabelaResumo">
+            <columns>
+                <TableColumn text="Sessão" fx:id="colunaSessao" />
+                <TableColumn text="Horário" fx:id="colunaHorario" />
+                <TableColumn text="Ocupação (%)" fx:id="colunaOcupacao" />
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>

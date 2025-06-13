@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="TOP_CENTER" spacing="20"
+      stylesheets="@../style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.Adm.EstatisticasLucrosController">
+
+    <!-- Navbar -->
+    <VBox styleClass="padding-large">
+        <fx:include source="/Adm/AdminNavBar.fxml" />
+    </VBox>
+
+    <!-- Título -->
+    <Label text="Estatísticas de Lucros" styleClass="title-primary" />
+
+    <!-- Conteúdo Principal -->
+    <VBox alignment="CENTER" spacing="20">
+        <!-- Informações Resumidas -->
+        <HBox alignment="CENTER" spacing="50">
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="Peça Mais Lucrativa" styleClass="title-secondary" />
+                <Label fx:id="labelPecaMaisLucrativa" text="Peça X: R$ 10.000,00" styleClass="text-body" />
+            </VBox>
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="Sessão Mais Lucrativa" styleClass="title-secondary" />
+                <Label fx:id="labelSessaoMaisLucrativa" text="Sessão Y: R$ 5.000,00" styleClass="text-body" />
+            </VBox>
+        </HBox>
+
+        <!-- Gráfico de Lucros por Peça -->
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="Lucros por Peça" styleClass="title-secondary" />
+            <BarChart fx:id="graficoLucros" title="Lucros por Peça" animated="true">
+                <xAxis>
+                    <CategoryAxis fx:id="eixoX" label="Peças" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="eixoY" label="Lucro Total (R$)" />
+                </yAxis>
+            </BarChart>
+        </VBox>
+
+        <!-- Tabela Resumo -->
+        <Label text="Resumo de Lucros por Peça" styleClass="title-secondary" />
+        <TableView fx:id="tabelaLucros">
+            <columns>
+                <TableColumn text="Peça" fx:id="colunaPeca" />
+                <TableColumn text="Sessão" fx:id="colunaSessao" />
+                <TableColumn text="Lucro Total (R$)" fx:id="colunaLucro" />
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="TOP_CENTER" spacing="20"
+      stylesheets="@../style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.Adm.EstatisticasPecasController">
+
+    <!-- Navbar -->
+    <VBox styleClass="padding-large">
+        <fx:include source="/Adm/AdminNavBar.fxml" />
+    </VBox>
+
+    <!-- Título -->
+    <Label text="Estatísticas de Peças" styleClass="title-primary" />
+
+    <!-- Gráfico de Vendas por Peça -->
+    <BarChart fx:id="graficoVendasPorPeca" title="Ingressos Vendidos por Peça">
+        <xAxis>
+            <CategoryAxis label="Peças" />
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Ingressos Vendidos" />
+        </yAxis>
+    </BarChart>
+
+    <!-- Indicadores -->
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="Indicadores" styleClass="title-secondary" />
+        <Label fx:id="pecaMaisVendidaLabel" text="Peça mais vendida: ..." styleClass="text-body" />
+        <Label fx:id="pecaMenosVendidaLabel" text="Peça menos vendida: ..." styleClass="text-body" />
+    </VBox>
+</VBox>

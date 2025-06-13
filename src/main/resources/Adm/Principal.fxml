@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="TOP_CENTER" spacing="20"
+      stylesheets="@../style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.Adm.PrincipalController">
+
+    <!-- Navbar -->
+    <VBox styleClass="padding-large">
+        <fx:include source="AdminNavBar.fxml" />
+    </VBox>
+
+    <!-- Título -->
+    <Label text="Estatísticas de Vendas" styleClass="title-primary" />
+
+    <!-- Resumo Geral -->
+    <VBox alignment="CENTER" spacing="20" styleClass="padding-large">
+        <Label text="Resumo Geral" styleClass="title-secondary" />
+        <Label fx:id="resumoGeralLabel" text="Aqui ficará o resumo das principais estatísticas." styleClass="text-body" />
+    </VBox>
+</VBox>

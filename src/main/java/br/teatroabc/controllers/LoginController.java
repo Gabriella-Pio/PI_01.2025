@@ -27,14 +27,14 @@ public class LoginController {
             alert.showAndWait();
         } else {
             // Se os campos estiverem preenchidos, faz a navegação
-            switchToPecas(event);
+            switchToAdm(event);
         }
     }
 
     @FXML
-    private void switchToPecas(ActionEvent event) {
+    private void switchToAdm(ActionEvent event) {
         // Sua lógica de navegação para a página de Peças
-        NavigationController.switchToTela("/Pecas.fxml", event);
+        NavigationController.switchToTela("/Adm/Principal.fxml", event);
     }
 
 }
