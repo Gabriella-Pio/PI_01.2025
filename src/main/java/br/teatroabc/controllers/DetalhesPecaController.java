@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +31,10 @@ public class DetalhesPecaController {
     @FXML
     private Label horariosPeca;
 
+    @FXML
+    private ChoiceBox<String> choiceQuantidadeIngressos;
+
+
     private Stage stage;
 
     public void initialize() {
@@ -51,6 +56,14 @@ public class DetalhesPecaController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
+
+            // Passar a quantidade de ingressos para o próximo controlador
+            EscolherPoltronaController controller = loader.getController();
+            String selectedIngressos = choiceQuantidadeIngressos.getValue();
+
+            if (selectedIngressos != null) {
+                controller.setQuantidadeIngressos(Integer.parseInt(selectedIngressos));
+            }
 
             // Salva a cena atual no histórico
             Scene currentScene = ((Node) event.getSource()).getScene();
