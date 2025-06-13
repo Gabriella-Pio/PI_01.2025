@@ -7,7 +7,7 @@
       alignment="TOP_CENTER" spacing="20"
       stylesheets="@style.css"
       styleClass="background-main"
-      fx:controller="br.teatroabc.controllers.Controller">
+      fx:controller="br.teatroabc.controllers.ConfirmarController">
 
     <!-- Navbar -->
     <VBox styleClass="padding-large">

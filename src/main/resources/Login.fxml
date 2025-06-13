@@ -11,7 +11,7 @@
       alignment="CENTER" spacing="20"
       stylesheets="@style.css"
       styleClass="background-main"
-      fx:controller="br.teatroabc.controllers.Controller">
+      fx:controller="br.teatroabc.controllers.LoginController">
 
 
     <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 10 20 20 20;">
@@ -26,12 +26,10 @@
                 <VBox fx:id="loginPane" alignment="CENTER" styleClass="background-box">
                     <TextField fx:id="txtUsuario" promptText="Usuário" styleClass="text-forms, background-form"/>
                     <PasswordField fx:id="txtSenha" promptText="Senha" styleClass="text-forms, background-form"/>
-                    <Button fx:id="btnLogin" onAction="#switchToPecas" text="Entrar" styleClass="button-primary"/>
+                    <Button fx:id="btnLogin" onAction="#realizarLogin" text="Entrar" styleClass="button-primary"/>
                 </VBox>
 
-                <!-- Alternador entre Login e Cadastro -->
-                <Hyperlink fx:id="linkAlternar" text="Não possui conta? Cadastre-se" onAction="#switchToCadastro" styleClass="button-link"/>
-            </VBox>
+                </VBox>
         </VBox>
     </ScrollPane>
 </VBox>

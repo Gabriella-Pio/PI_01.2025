@@ -28,11 +28,8 @@
         <!-- Botão de Login -->
         <Button fx:id="loginButton" onAction="#switchToLogin" text="Login" styleClass="button-primary" />
 
-        <!-- Botão de Cadastro -->
-        <Button fx:id="cadastroButton" onAction="#switchToCadastro" text="Cadastro" styleClass="button-primary"/>
-
         <!-- Botão transparente "Entrar sem login" -->
-        <Hyperlink fx:id="entrarSemLoginButton" text="Entrar sem login" onAction="#switchToPecas" styleClass="button-link"/>
+        <Button fx:id="entrarSemLoginButton" text="Entrar sem login" onAction="#switchToPecas" styleClass="button-primary"/>
 
     </VBox>
 
