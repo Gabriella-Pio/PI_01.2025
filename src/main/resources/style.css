@@ -51,6 +51,13 @@
     -fx-text-fill: #0f1b13;
 }
 
+.text-poltronas {
+    -fx-font-family: 'Poppins Light'; /* Verifique se 'Poppins' está instalada no sistema */
+    -fx-padding: 15;
+    -fx-font-size: 16px;
+    -fx-text-fill: #0f1b13;
+}
+
 .text-forms {
     -fx-font-family: 'Poppins Light'; /* Verifique se 'Poppins' está instalada no sistema */
     -fx-font-size: 20px;
