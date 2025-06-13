@@ -27,16 +27,17 @@
 
             <!-- Detalhes em Disposição Horizontal -->
             <HBox alignment="CENTER" spacing="40" style="-fx-padding: 20;">
-                <!-- Imagem da Peça -->
-                <ImageView fx:id="imagemPeca" fitWidth="400" fitHeight="400" preserveRatio="true" />
+                <!-- Descrição (lado esquerdo) -->
+                <Label fx:id="descricaoPeca" wrapText="true"
+                       text="Aqui será exibida a descrição detalhada da peça selecionada."
+                       styleClass="text-body"
+                       maxWidth="400" prefWidth="400" />
 
-                <!-- Informações da Peça -->
-                <VBox alignment="TOP_LEFT" spacing="20" maxWidth="400">
-                    <!-- Descrição -->
-                    <Label fx:id="descricaoPeca" wrapText="true"
-                           text="Aqui será exibida a descrição detalhada da peça selecionada."
-                           styleClass="text-body" />
+                <!-- Imagem (centro) -->
+                <ImageView fx:id="imagemPeca" fitWidth="500" fitHeight="500" preserveRatio="true" />
 
+                <!-- Escolhas (lado direito) -->
+                <VBox alignment="TOP_LEFT" spacing="20" maxWidth="400" prefWidth="400">
                     <!-- Escolher Dia -->
                     <VBox alignment="TOP_LEFT" spacing="10">
                         <Label text="Escolha o Dia:" styleClass="title-secondary" />
@@ -56,24 +57,33 @@
                             </items>
                         </ChoiceBox>
                     </VBox>
+
+                    <!-- Escolher Quantidade de Ingressos -->
+                    <VBox alignment="TOP_LEFT" spacing="10">
+                        <Label text="Quantidade de Ingressos:" styleClass="title-secondary" />
+                        <ChoiceBox fx:id="choiceQuantidadeIngressos" styleClass="text-forms, background-form">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="1" />
+                                    <String fx:value="2" />
+                                    <String fx:value="3" />
+                                    <String fx:value="4" />
+                                    <String fx:value="5" />
+                                    <String fx:value="6" />
+                                    <String fx:value="7" />
+                                    <String fx:value="8" />
+                                    <String fx:value="9" />
+                                    <String fx:value="10" />
+                                </FXCollections>
+                            </items>
+                        </ChoiceBox>
+                    </VBox>
                 </VBox>
             </HBox>
 
-<!--            &lt;!&ndash; Escolher Poltronas &ndash;&gt;-->
-<!--            <VBox alignment="TOP_CENTER" spacing="20">-->
-<!--                <Label text="Escolha a Poltrona:" styleClass="title-secondary" />-->
-<!--                <GridPane fx:id="gridPoltronas" hgap="10" vgap="10" styleClass="background-box" alignment="CENTER">-->
-<!--                    &lt;!&ndash; Exemplo de Poltronas &ndash;&gt;-->
-<!--                    <Button text="A1" styleClass="button-primary" />-->
-<!--                    <Button text="A2" styleClass="button-primary" />-->
-<!--                    <Button text="B1" styleClass="button-primary" />-->
-<!--                    <Button text="B2" styleClass="button-primary" />-->
-<!--                </GridPane>-->
-<!--            </VBox>-->
-
             <!-- Botões de Ação -->
             <HBox alignment="CENTER" spacing="20">
-                <Button fx:id="btnSelecionarPoltrona" text="Escolher Poltronas" onAction="#switchToEscolherPoltrona" styleClass="button-primary" />
+                <Button fx:id="btnSelecionarPoltrona" text="Escolher Poltronas" onAction="#switchToEscolherPoltrona" style="-fx-pref-width: 350" styleClass="button-primary" />
             </HBox>
         </VBox>
     </ScrollPane>
