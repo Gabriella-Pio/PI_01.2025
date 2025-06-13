@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="TOP_CENTER" spacing="20"
+      stylesheets="@style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.FidelidadeController">
+
+    <!-- Navbar -->
+    <VBox styleClass="padding-large">
+        <fx:include source="NavBar.fxml" />
+    </VBox>
+
+    <!-- Título da Tela -->
+    <Label fx:id="labelTitulo" text="Cadastro Fidelidade" styleClass="title-primary"/>
+
+    <!-- Caixa Central -->
+    <VBox fx:id="mainBox" alignment="CENTER" maxWidth="700" maxHeight="800" styleClass="background-box, padding-large">
+
+        <!-- Campos de Cadastro -->
+        <VBox fx:id="cadastroPane" alignment="CENTER" styleClass="background-box">
+            <TextField fx:id="txtNome" promptText="Nome" styleClass="text-forms, background-form"/>
+            <TextField fx:id="txtCPF" promptText="CPF" styleClass="text-forms, background-form"/>
+            <TextField fx:id="txtTelefone" promptText="Telefone" styleClass="text-forms, background-form"/>
+            <TextField fx:id="txtEndereco" promptText="Endereço" styleClass="text-forms, background-form"/>
+            <DatePicker fx:id="dateNascimento" promptText="Data de Nascimento" styleClass="text-forms, background-form"/>
+            <Button fx:id="btnCadastrar" onAction="#cadastrarCliente" text="Cadastrar" styleClass="button-primary" />
+        </VBox>
+    </VBox>
+</VBox>
+

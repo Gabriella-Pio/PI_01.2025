@@ -1,0 +1,20 @@
+Amarelo Cerrado
+#c38723
+
+Verde Floresta
+#0f1b13
+
+Marrom Terra
+#532920
+
+Marrom Avermelhado
+#884728
+
+Bege Areia
+#d7cdc2
+
+Marfim
+#f2eee9
+
+Dourado
+#b08d57

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="CENTER" spacing="20"
+      stylesheets="@style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.Controller">
+
+
+    <!-- Caixa  -->
+
+    <VBox alignment="CENTER" maxWidth="700" maxHeight="600" styleClass="background-box, padding-large">
+
+        <!-- Logo -->
+        <ImageView fitWidth="220.0" preserveRatio="true">
+            <image>
+                <Image url="@Img/logo.png" />
+            </image>
+        </ImageView>
+
+        <!-- Botão de Login -->
+        <Button fx:id="loginButton" onAction="#switchToLogin" text="Login" styleClass="button-primary" />
+
+        <!-- Botão de Cadastro -->
+        <Button fx:id="cadastroButton" onAction="#switchToCadastro" text="Cadastro" styleClass="button-primary"/>
+
+        <!-- Botão transparente "Entrar sem login" -->
+        <Hyperlink fx:id="entrarSemLoginButton" text="Entrar sem login" onAction="#switchToPecas" styleClass="button-link"/>
+
+    </VBox>
+
+</VBox>

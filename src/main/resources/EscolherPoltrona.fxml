@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="TOP_CENTER" spacing="20"
+      stylesheets="@style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.EscolherPoltronaController">
+
+    <!-- Navbar -->
+    <VBox styleClass="padding-large">
+        <fx:include source="NavBar.fxml" />
+    </VBox>
+
+
+
+    <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 10 20 20 20;">
+        <VBox spacing="60" alignment="TOP_CENTER" style="-fx-background-color: #f2eee9; -fx-padding: 0 200 200 200;">
+            <!-- Título -->
+            <Label text="Escolha sua Poltrona" styleClass="title-primary" />
+            <!-- Layout Principal -->
+            <VBox fx:id="rootLayout" spacing="20" alignment="CENTER">
+                <!-- Plateia A -->
+                <VBox fx:id="plateiaASection" alignment="CENTER" spacing="10" styleClass="section-box"></VBox>
+
+                <!-- Plateia B -->
+                <VBox fx:id="plateiaBSection" alignment="CENTER" spacing="10" styleClass="section-box"></VBox>
+
+                <!-- Frisa -->
+                <VBox fx:id="frisaSection" alignment="CENTER" spacing="10" styleClass="section-box"></VBox>
+
+                <!-- Camarote -->
+                <VBox fx:id="camaroteSection" alignment="CENTER" spacing="10" styleClass="section-box"></VBox>
+
+                <!-- Balcão Nobre -->
+                <VBox fx:id="balcaoNobreSection" alignment="CENTER" spacing="10" styleClass="section-box"></VBox>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+
+
+</VBox>

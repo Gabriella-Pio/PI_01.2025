@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="TOP_CENTER" spacing="20"
+      stylesheets="@style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.Controller">
+
+    <!-- Navbar -->
+    <VBox styleClass="padding-large">
+        <fx:include source="NavBar.fxml" />
+    </VBox>
+
+    <!-- Conteúdo -->
+    <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 10 20 20 20;">
+        <VBox spacing="60" alignment="TOP_CENTER" style="-fx-background-color: #f2eee9; -fx-padding: 0 200 200 200;">
+
+            <!-- Título Principal -->
+            <Label text="Sobre Nós" styleClass="title-primary" />
+
+            <!-- Seção: Nossa Missão -->
+            <Label text="Nossa Missão" styleClass="title-secondary" />
+            <Label wrapText="true" text="No Teatro ABC, somos apaixonados por promover a arte e a cultura em todas as suas formas. Nosso objetivo é ser um espaço acolhedor para artistas e espectadores, trazendo a magia do teatro para a comunidade e criando experiências únicas que conectam pessoas."
+                   styleClass="text-body" />
+
+            <!-- Seção: O que você encontrará -->
+            <Label text="O que você encontrará no Teatro ABC" styleClass="title-secondary" />
+            <VBox spacing="10">
+                <Label wrapText="true" text="• Apresentações Teatrais: Peças para todas as idades e gostos, de dramas emocionantes a comédias leves."
+                       styleClass="text-body" />
+                <Label wrapText="true" text="• Sessões de Cultura: Eventos que vão além do teatro, incluindo apresentações musicais e palestras culturais."
+                       styleClass="text-body" />
+                <Label wrapText="true" text="• Programa de Fidelidade: Benefícios exclusivos para nossos clientes mais assíduos, incluindo descontos e promoções."
+                       styleClass="text-body" />
+                <Label wrapText="true" text="• Acessibilidade: Um ambiente inclusivo e acessível para todos, com infraestrutura adaptada e opções de ingresso online."
+                       styleClass="text-body" />
+            </VBox>
+
+            <!-- Seção: Nossa História -->
+            <Label text="Nossa História" styleClass="title-secondary"/>
+            <Label wrapText="true" text="Fundado em [ano de fundação], o Teatro ABC nasceu com o sonho de ser um ponto de encontro para artistas e amantes das artes. Ao longo dos anos, crescemos e nos modernizamos, mas sempre mantendo nossa essência como um centro de cultura e inspiração."
+                   styleClass="text-body" />
+            <Label wrapText="true" text="Em 2025, adotamos novas tecnologias para facilitar a venda de ingressos e o acesso às nossas apresentações, tornando a experiência do usuário mais simples e intuitiva."
+                   styleClass="text-body" />
+
+            <!-- Seção: Confiado por Amantes da Cultura -->
+            <Label text="Confiado por Amantes da Cultura" styleClass="title-secondary"/>
+            <Label wrapText="true" text="Somos reconhecidos pelo nosso compromisso com a excelência e a acessibilidade cultural. Nosso público diversificado, composto por famílias, jovens e adultos, valoriza a dedicação e a qualidade que trazemos a cada espetáculo."
+                   styleClass="text-body" />
+
+            <!-- Seção: Conheça Nossa Equipe -->
+            <Label text="Conheça Nossa Equipe" styleClass="title-secondary" />
+            <Label wrapText="true" text="Nossa equipe é formada por profissionais apaixonados por teatro e arte. Cada colaborador, desde os artistas até os técnicos e atendentes, trabalha para criar momentos memoráveis para o público."
+                   styleClass="text-body" />
+
+            <!-- Seção: Entre em Contato -->
+            <Label text="Entre em Contato" styleClass="title-secondary" />
+            <Label wrapText="true" text="Tem dúvidas ou sugestões? Nosso atendimento está à disposição para ajudar. Entre em contato conosco através de [e-mail ou telefone] ou visite nossa página de [informações de contato]."
+                   styleClass="text-body" />
+        </VBox>
+    </ScrollPane>
+
+</VBox>

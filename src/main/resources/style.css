@@ -1,0 +1,186 @@
+/* Background */
+.background-main {
+    -fx-background-color: #f2eee9;
+    -fx-pref-width: 1440; /* Define a largura preferencial */
+    -fx-pref-height: 1024; /* Define a altura preferencial */
+}
+
+.background-inicial {
+    -fx-background-color: #d7cdc2;
+    -fx-pref-width: 1440; /* Define a largura preferencial */
+    -fx-pref-height: 1024; /* Define a altura preferencial */
+}
+
+.background-box {
+    -fx-background-color: #d7cdc2;
+    -fx-background-radius: 20;
+    -fx-padding: 30;
+    -fx-spacing: 20;
+}
+
+.background-form {
+    -fx-background-color: #f2eee9; /* Cor de fundo */
+    -fx-background-radius: 10; /* Define bordas arredondadas */
+    -fx-border-radius: 10; /* Arredonda também as bordas */
+    -fx-pref-width: 600; /* Define a largura padrão */
+    -fx-border-color: #f2eee9; /* Cor da borda */
+}
+
+/* Títulos */
+.title-primary {
+    -fx-font-family: 'Playfair Display';
+    -fx-font-size: 48px;
+    -fx-text-fill: #532920;
+    -fx-font-weight: bold; /* Peso da fonte: válido */
+    -fx-font-style: italic;
+    -fx-padding: 20 10 20 10; /* Top, Right, Bottom, Left */
+}
+
+.title-secondary {
+    -fx-font-family: 'Playfair Display';
+    -fx-font-size: 32px;
+    -fx-text-fill: #532920;
+    -fx-font-weight: lighter; /* Peso da fonte */
+}
+
+/* Texto corrido */
+.text-body {
+    -fx-font-family: 'Poppins Light'; /* Verifique se 'Poppins' está instalada no sistema */
+    -fx-padding: 15;
+    -fx-font-size: 22px;
+    -fx-text-fill: #0f1b13;
+}
+
+.text-forms {
+    -fx-font-family: 'Poppins Light'; /* Verifique se 'Poppins' está instalada no sistema */
+    -fx-font-size: 20px;
+    -fx-text-fill: #0f1b13;
+}
+
+/* Botões */
+.button-primary {
+    -fx-background-color: #532920;
+    -fx-padding: 10 25; /* Top-Bottom, Left-Right */
+    -fx-text-fill: #f2eee9;
+    -fx-font-family: 'Poppins'; /* Corrigido para usar apenas 'Poppins' */
+    -fx-font-size: 24px;
+    -fx-background-radius: 10;
+    -fx-pref-width: 250; /* Define a largura padrão */
+    -fx-cursor: hand;    /* Define o cursor como uma mão ao passar sobre o botão */
+}
+
+.button-link {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #b08d57;
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 20px;
+    -fx-cursor: hand;
+}
+
+/* Estilos gerais de padding */
+.section-padding {
+    -fx-padding: 50;
+}
+
+.padding-large {
+    -fx-padding: 40; /* Simplificado para evitar redundância */
+}
+
+/* Estilos gerais de barra de rolagem */
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent; /* Torna a barra de rolagem invisível */
+}
+
+.scroll-pane .increment-button,
+.scroll-pane .decrement-button {
+    -fx-background-color: transparent; /* Remove os botões de rolagem */
+}
+
+.scroll-pane .thumb {
+    -fx-background-color: #d7cdc2;
+}
+
+.scroll-pane .track {
+    -fx-background-color: transparent; /* Remove o fundo da trilha */
+}
+
+/* Destaques */
+.highlight-section {
+    -fx-padding: 20;
+}
+
+.highlight-card {
+    -fx-background-color: #ede0d4;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);
+    -fx-cursor: hand;
+}
+
+.highlight-text {
+    -fx-font-size: 18px;
+    -fx-text-fill: #532920;
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: bold;
+}
+
+/* Grid */
+.grid-container {
+    -fx-padding: 20;
+}
+
+.grid-card {
+    -fx-background-color: #d7cdc2;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-cursor: hand;
+}
+
+.grid-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: #532920;
+    -fx-font-family: 'Poppins';
+}
+
+
+/* Carrossel */
+.carrossel-scroll {
+    -fx-background: transparent;
+    -fx-padding: 10;
+}
+
+.carrossel-container {
+    -fx-padding: 20;
+    -fx-alignment: center;
+}
+
+/* Palco */
+.stage-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #532920;
+}
+
+/* Rótulo das Seções */
+.section-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #b08d57;
+}
+
+/* Botões de Poltronas */
+.seat-button {
+    -fx-background-color: #ede0d4;
+    -fx-font-size: 14px;
+    -fx-text-fill: #0f1b13;
+    -fx-background-radius: 10;
+    -fx-padding: 5 10 5 10;
+    -fx-cursor: hand;
+}
+
+.seat-button:hover {
+    -fx-background-color: #c38723;
+    -fx-text-fill: #f2eee9;
+}

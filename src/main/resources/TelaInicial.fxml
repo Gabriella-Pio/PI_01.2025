@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="CENTER" spacing="20"
+      stylesheets="@style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.Controller">
+
+
+    <ImageView fitWidth="500.0" preserveRatio="true">
+        <image>
+            <Image url="@Img/logo.png" />
+        </image>
+    </ImageView>
+
+    <!-- Botão de Entrar -->
+    <Button fx:id="entrarButton" onAction="#switchToCadastroLogin" text="Entrar" styleClass="button-primary"/>
+</VBox>
