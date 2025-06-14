@@ -9,7 +9,7 @@
       alignment="TOP_CENTER" spacing="20"
       stylesheets="@style.css"
       styleClass="background-main"
-      fx:controller="br.teatroabc.controllers.Controller">
+      fx:controller="br.teatroabc.controllers.PecasController">
 
     <!-- Navbar -->
     <VBox styleClass="padding-large">
@@ -22,33 +22,33 @@
     <!-- Destaques -->
     <HBox alignment="CENTER" spacing="20" maxWidth="1200" styleClass="highlight-section">
         <!-- Card 1 -->
-        <VBox fx:id="destaquePeca1" alignment="CENTER" spacing="10" styleClass="highlight-card" onMouseClicked="#switchToDetalhes">
-            <ImageView fx:id="imageView" fitWidth="400" fitHeight="400" preserveRatio="true">
+        <VBox alignment="CENTER" spacing="10" styleClass="highlight-card" onMouseClicked="#switchToDetalhesPeca1">
+            <ImageView fitWidth="400" fitHeight="400" preserveRatio="true">
                 <image>
-                    <Image url="@Img/peca1.png" />
+                    <Image url="@Img/pecaRJ.jpg" />
                 </image>
             </ImageView>
-            <Label fx:id="tituloLabel" text="Peça 1" styleClass="highlight-text" />
+            <Label text="Romeu e Julieta" styleClass="highlight-text" />
         </VBox>
 
         <!-- Card 2 -->
-        <VBox alignment="CENTER" fx:id="destaquePeca2" spacing="10" styleClass="highlight-card" onMouseClicked="#switchToDetalhes">
+        <VBox alignment="CENTER" spacing="10" styleClass="highlight-card" onMouseClicked="#switchToDetalhesPeca2">
             <ImageView fitWidth="400" fitHeight="400" preserveRatio="true">
                 <image>
-                    <Image url="@Img/peca2.png" />
+                    <Image url="@Img/pecaHamlet.jpeg" />
                 </image>
             </ImageView>
-            <Label text="Peça 2 - Nome" styleClass="highlight-text" />
+            <Label text="Hamlet" styleClass="highlight-text" />
         </VBox>
 
         <!-- Card 3 -->
-        <VBox alignment="CENTER" fx:id="destaquePeca3" spacing="10" styleClass="highlight-card" onMouseClicked="#switchToDetalhes">
+        <VBox alignment="CENTER" spacing="10" styleClass="highlight-card" onMouseClicked="#switchToDetalhesPeca3">
             <ImageView fitWidth="400" fitHeight="400" preserveRatio="true">
                 <image>
-                    <Image url="@Img/peca3.png" />
+                    <Image url="@Img/pecaAlice.jpg" />
                 </image>
             </ImageView>
-            <Label text="Peça 3 - Nome" styleClass="highlight-text" />
+            <Label text="Alice no País das Maravilhas" styleClass="highlight-text" />
         </VBox>
     </HBox>
 </VBox>

@@ -45,8 +45,14 @@ public class DetalhesPecaController {
     public void initialize() {
         // Exemplo de preenchimento inicial
         tituloPeca.setText("A Comédia da Vida Privada");
-        imagemPeca.setImage(new Image(getClass().getResourceAsStream("/Img/peca1.png")));
+        imagemPeca.setImage(new Image(getClass().getResourceAsStream("/Img/pecaRJ.jpg")));
         descricaoPeca.setText("Uma peça emocionante que retrata os desafios e as alegrias da vida cotidiana.");
+    }
+
+    public void setDetalhes(String titulo, String descricao, String imagemPath) {
+        tituloPeca.setText(titulo);
+        descricaoPeca.setText(descricao);
+        imagemPeca.setImage(new Image(getClass().getResourceAsStream(imagemPath)));
     }
 
     @FXML

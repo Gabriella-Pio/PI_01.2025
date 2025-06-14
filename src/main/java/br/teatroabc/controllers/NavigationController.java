@@ -55,4 +55,23 @@ public class NavigationController {
             e.printStackTrace();
         }
     }
+//    public static void switchToTela(String fxmlPath, Event event, String[] args) {
+public static void switchToTela(String fxmlPath, Event event, String[] args) {
+    try {
+            FXMLLoader loader = new FXMLLoader(NavigationController.class.getResource(fxmlPath));
+            Parent root = loader.load();
+
+            // Salva a cena atual no histórico
+            Scene currentScene = ((Node) event.getSource()).getScene();
+            saveCurrentScene(currentScene);
+
+            // Configura a nova cena
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+//            stage.setFullScreen(true); // Força tela cheia
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
