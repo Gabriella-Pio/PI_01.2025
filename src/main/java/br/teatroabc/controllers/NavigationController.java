@@ -9,68 +9,62 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Stack;
+import java.util.function.Consumer;
+import java.util.logging.Logger;
 
 public class NavigationController {
-    static final Stack<Scene> screenHistory = new Stack<>();
+    private static final Logger LOGGER = Logger.getLogger(NavigationController.class.getName());
+    private static final Stack<Scene> screenHistory = new Stack<>();
+    private static final int HISTORY_LIMIT = 10;
 
-    /**
-     * Salva a cena atual no histórico.
-     */
     public static void saveCurrentScene(Scene currentScene) {
+        if (screenHistory.size() >= HISTORY_LIMIT) {
+            screenHistory.remove(0);
+        }
         screenHistory.push(currentScene);
     }
 
-    /**
-     * Volta para a cena anterior no histórico.
-     */
     public static void voltar(Event event) {
         if (!screenHistory.isEmpty()) {
             Scene previousScene = screenHistory.pop();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(previousScene);
             stage.show();
+            LOGGER.info("Returned to previous scene.");
         } else {
-            System.out.println("Nenhuma tela anterior encontrada.");
+            LOGGER.warning("No previous scene in history.");
         }
     }
 
-    /**
-     * Alterna para uma nova tela, salvando a cena atual no histórico.
-     */
     public static void switchToTela(String fxmlPath, Event event) {
+        switchToTela(fxmlPath, event, null, false);
+    }
+
+    public static <T> void switchToTela(String fxmlPath, Event event, Consumer<T> controllerConsumer) {
+        switchToTela(fxmlPath, event, controllerConsumer, false);
+    }
+
+    public static <T> void switchToTela(String fxmlPath, Event event, Consumer<T> controllerConsumer, boolean fullScreen) {
         try {
             FXMLLoader loader = new FXMLLoader(NavigationController.class.getResource(fxmlPath));
             Parent root = loader.load();
 
-            // Salva a cena atual no histórico
+            T controller = loader.getController();
+            if (controllerConsumer != null) {
+                controllerConsumer.accept(controller);
+            }
+
             Scene currentScene = ((Node) event.getSource()).getScene();
             saveCurrentScene(currentScene);
 
-            // Configura a nova cena
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-//            stage.setFullScreen(true); // Força tela cheia
+            stage.setFullScreen(fullScreen);
             stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-//    public static void switchToTela(String fxmlPath, Event event, String[] args) {
-public static void switchToTela(String fxmlPath, Event event, String[] args) {
-    try {
-            FXMLLoader loader = new FXMLLoader(NavigationController.class.getResource(fxmlPath));
-            Parent root = loader.load();
 
-            // Salva a cena atual no histórico
-            Scene currentScene = ((Node) event.getSource()).getScene();
-            saveCurrentScene(currentScene);
-
-            // Configura a nova cena
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-//            stage.setFullScreen(true); // Força tela cheia
-            stage.show();
+            LOGGER.info("Switched to " + fxmlPath);
         } catch (IOException e) {
+            LOGGER.severe("Error switching to " + fxmlPath + ": " + e.getMessage());
             e.printStackTrace();
         }
     }

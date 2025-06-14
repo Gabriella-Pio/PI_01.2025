@@ -5,11 +5,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 
+<?import javafx.scene.control.ScrollPane?>
 <VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
       alignment="TOP_CENTER" spacing="20"
       stylesheets="@style.css"
       styleClass="background-main"
-      fx:controller="br.teatroabc.controllers.IngressosController">
+      fx:controller="br.teatroabc.controllers.MeusIngressosController">
 
     <!-- Navbar -->
     <VBox styleClass="padding-large">
@@ -19,16 +20,20 @@
     <!-- Título -->
     <Label text="Meus Ingressos" styleClass="title-primary" />
 
-    <!-- Formulário -->
-    <VBox fx:id="searchBox" alignment="CENTER" maxWidth="600" maxHeight="800" styleClass="background-box, padding-large">
-        <TextField fx:id="cpfField" promptText="Digite seu CPF" styleClass="text-forms, background-form" />
-        <DatePicker fx:id="dateNascimento" promptText="Data de Nascimento" styleClass="text-forms, background-form" />
-        <Button fx:id="btnBuscarIngressos" onAction="#buscarIngressos" text="Buscar" styleClass="button-primary" />
-    </VBox>
+    <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 10 20 20 20;">
+        <VBox spacing="60" alignment="TOP_CENTER" style="-fx-background-color: #f2eee9; -fx-padding: 0 200 200 200;">
+            <!-- Formulário -->
+            <VBox fx:id="searchBox" alignment="CENTER" maxWidth="600" maxHeight="800" styleClass="background-box, padding-large">
+                <TextField fx:id="cpfField" promptText="Digite seu CPF" styleClass="text-forms, background-form" />
+                <DatePicker fx:id="dateNascimento" promptText="Data de Nascimento" styleClass="text-forms, background-form" />
+                <Button fx:id="btnBuscarIngressos" onAction="#buscarIngressos" text="Buscar" styleClass="button-primary" />
+            </VBox>
 
-    <!-- Resultados -->
-    <VBox fx:id="resultBox" alignment="CENTER" maxWidth="600" maxHeight="800"  visible="false" styleClass="background-box, padding-large">
-        <Label text="Seus ingressos:" styleClass="title-secondary" />
-        <ListView fx:id="ingressosList" styleClass="text-body" />
-    </VBox>
+            <!-- Resultados -->
+            <VBox fx:id="resultBox" alignment="CENTER" maxWidth="600" maxHeight="800"  visible="false" styleClass="background-box, padding-large">
+                <Label text="Seus ingressos:" styleClass="title-secondary" />
+                <ListView fx:id="ingressosList" styleClass="text-body" />
+            </VBox>
+        </VBox>
+    </ScrollPane>
 </VBox>

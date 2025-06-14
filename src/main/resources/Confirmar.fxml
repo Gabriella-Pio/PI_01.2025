@@ -20,7 +20,13 @@
     <!-- Caixa Central -->
     <VBox fx:id="mainBox" alignment="CENTER" maxWidth="700" maxHeight="800" styleClass="background-box, padding-large">
 
-        <!-- Campos de Cadastro -->
+        <!-- Valor Total -->
+        <HBox alignment="CENTER" spacing="10">
+            <Label text="Total: " styleClass="title-secondary" />
+            <Label fx:id="labelTotal" text="R$ 0,00" styleClass="title-secondary" />
+        </HBox>
+
+        <!-- Campos para Salvar Ingresso ao Cliente -->
         <VBox fx:id="cadastroPane" alignment="CENTER" styleClass="background-box">
             <TextField fx:id="txtCPF" promptText="CPF" styleClass="text-forms, background-form"/>
             <DatePicker fx:id="dateNascimento" promptText="Data de Nascimento" styleClass="text-forms, background-form"/>

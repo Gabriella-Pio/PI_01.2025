@@ -33,7 +33,6 @@ public class LoginController {
 
     @FXML
     private void switchToAdm(ActionEvent event) {
-        // Sua lógica de navegação para a página de Peças
         NavigationController.switchToTela("/Adm/Principal.fxml", event);
     }
 

@@ -25,43 +25,64 @@
 
             <!-- Seção: Nossa Missão -->
             <Label text="Nossa Missão" styleClass="title-secondary" />
-            <Label wrapText="true" text="No Teatro ABC, somos apaixonados por promover a arte e a cultura em todas as suas formas. Nosso objetivo é ser um espaço acolhedor para artistas e espectadores, trazendo a magia do teatro para a comunidade e criando experiências únicas que conectam pessoas."
-                   styleClass="text-body" />
+            <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                <Text text="No Teatro ABC, somos apaixonados por promover a arte e a cultura em todas as suas formas. Nosso objetivo é ser um espaço acolhedor para artistas e espectadores, trazendo a magia do teatro para a comunidade e criando experiências únicas que conectam pessoas."
+                      styleClass="text-body" />
+            </TextFlow>
 
             <!-- Seção: O que você encontrará -->
             <Label text="O que você encontrará no Teatro ABC" styleClass="title-secondary" />
             <VBox spacing="10">
-                <Label wrapText="true" text="• Apresentações Teatrais: Peças para todas as idades e gostos, de dramas emocionantes a comédias leves."
-                       styleClass="text-body" />
-                <Label wrapText="true" text="• Sessões de Cultura: Eventos que vão além do teatro, incluindo apresentações musicais e palestras culturais."
-                       styleClass="text-body" />
-                <Label wrapText="true" text="• Programa de Fidelidade: Benefícios exclusivos para nossos clientes mais assíduos, incluindo descontos e promoções."
-                       styleClass="text-body" />
-                <Label wrapText="true" text="• Acessibilidade: Um ambiente inclusivo e acessível para todos, com infraestrutura adaptada e opções de ingresso online."
-                       styleClass="text-body" />
+                <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                    <Text text="• Apresentações Teatrais: " styleClass="text-body-bold" />
+                    <Text text="Peças para todas as idades e gostos, de dramas emocionantes a comédias leves." styleClass="text-body" />
+                </TextFlow>
+                <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                    <Text text="• Sessões de Cultura: " styleClass="text-body-bold" />
+                    <Text text="Eventos que vão além do teatro, incluindo apresentações musicais e palestras culturais." styleClass="text-body" />
+                </TextFlow>
+                <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                    <Text text="• Programa de Fidelidade: " styleClass="text-body-bold" />
+                    <Text text="Benefícios exclusivos para nossos clientes mais assíduos, incluindo descontos e promoções." styleClass="text-body" />
+                </TextFlow>
+                <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                    <Text text="• Acessibilidade: " styleClass="text-body-bold" />
+                    <Text text="Um ambiente inclusivo e acessível para todos, com infraestrutura adaptada e opções de ingresso online." styleClass="text-body" />
+                </TextFlow>
             </VBox>
 
             <!-- Seção: Nossa História -->
             <Label text="Nossa História" styleClass="title-secondary"/>
-            <Label wrapText="true" text="Fundado em [ano de fundação], o Teatro ABC nasceu com o sonho de ser um ponto de encontro para artistas e amantes das artes. Ao longo dos anos, crescemos e nos modernizamos, mas sempre mantendo nossa essência como um centro de cultura e inspiração."
-                   styleClass="text-body" />
-            <Label wrapText="true" text="Em 2025, adotamos novas tecnologias para facilitar a venda de ingressos e o acesso às nossas apresentações, tornando a experiência do usuário mais simples e intuitiva."
-                   styleClass="text-body" />
+            <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                <Text text="Fundado em 2024, o Teatro ABC nasceu com o sonho de ser um ponto de encontro para artistas e amantes das artes. Ao longo dos anos, crescemos e nos modernizamos, mas sempre mantendo nossa essência como um centro de cultura e inspiração."
+                      styleClass="text-body" />
+            </TextFlow>
+            <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                <Text text="Em 2025, adotamos novas tecnologias para facilitar a venda de ingressos e o acesso às nossas apresentações, tornando a experiência do usuário mais simples e intuitiva."
+                      styleClass="text-body" />
+            </TextFlow>
 
             <!-- Seção: Confiado por Amantes da Cultura -->
             <Label text="Confiado por Amantes da Cultura" styleClass="title-secondary"/>
-            <Label wrapText="true" text="Somos reconhecidos pelo nosso compromisso com a excelência e a acessibilidade cultural. Nosso público diversificado, composto por famílias, jovens e adultos, valoriza a dedicação e a qualidade que trazemos a cada espetáculo."
-                   styleClass="text-body" />
+            <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                <Text text="Somos reconhecidos pelo nosso compromisso com a excelência e a acessibilidade cultural. Nosso público diversificado, composto por famílias, jovens e adultos, valoriza a dedicação e a qualidade que trazemos a cada espetáculo."
+                      styleClass="text-body" />
+            </TextFlow>
 
             <!-- Seção: Conheça Nossa Equipe -->
             <Label text="Conheça Nossa Equipe" styleClass="title-secondary" />
-            <Label wrapText="true" text="Nossa equipe é formada por profissionais apaixonados por teatro e arte. Cada colaborador, desde os artistas até os técnicos e atendentes, trabalha para criar momentos memoráveis para o público."
-                   styleClass="text-body" />
+            <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                <Text text="Nossa equipe é formada por profissionais apaixonados por teatro e arte. Cada colaborador, desde os artistas até os técnicos e atendentes, trabalha para criar momentos memoráveis para o público."
+                      styleClass="text-body" />
+            </TextFlow>
 
             <!-- Seção: Entre em Contato -->
             <Label text="Entre em Contato" styleClass="title-secondary" />
-            <Label wrapText="true" text="Tem dúvidas ou sugestões? Nosso atendimento está à disposição para ajudar. Entre em contato conosco através de [e-mail ou telefone] ou visite nossa página de [informações de contato]."
-                   styleClass="text-body" />
+            <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                <Text text="Tem dúvidas ou sugestões? Nosso atendimento está à disposição para ajudar. Entre em contato conosco através de [e-mail ou telefone] ou visite nossa página de [informações de contato]."
+                      styleClass="text-body" />
+            </TextFlow>
+
         </VBox>
     </ScrollPane>
 

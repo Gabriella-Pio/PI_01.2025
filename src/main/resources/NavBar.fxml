@@ -8,9 +8,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.Cursor?>
 
+
 <HBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
       alignment="CENTER_LEFT" spacing="20"
-      fx:controller="br.teatroabc.controllers.Controller"
+      fx:controller="br.teatroabc.controllers.NavBarController"
       stylesheets="@style.css"
       style="-fx-background-color: #d7cdc2;
              -fx-padding: 5;
@@ -37,21 +38,20 @@
         </image>
     </ImageView>
 
-
     <Button onAction="#switchToInicial" style="-fx-background-color: transparent;">
         <graphic>
             <VBox alignment="CENTER">
                 <Label text="Teatro"
                        style="-fx-font-size: 32px;
-                          -fx-text-fill: #532920;
-                          -fx-font-family: 'Playfair Display';
-                          -fx-font-weight: lighter;
-                          -fx-font-style: italic;"/>
+                     -fx-text-fill: #532920;
+                     -fx-font-family: 'Playfair Display';
+                     -fx-font-weight: lighter;
+                     -fx-font-style: italic;"/>
                 <Label text="ABC"
                        style="-fx-font-size: 24px;
-                          -fx-text-fill: #532920;
-                          -fx-font-family: 'Playfair Display';
-                          -fx-font-weight: bold;"/>
+                     -fx-text-fill: #532920;
+                     -fx-font-family: 'Playfair Display';
+                     -fx-font-weight: bold;"/>
             </VBox>
         </graphic>
         <cursor>
@@ -59,7 +59,7 @@
         </cursor>
     </Button>
 
-    <!-- Espaço entre logo e opções -->
+    <!-- Espaço Flexível para empurrar os botões para a direita -->
     <Region HBox.hgrow="ALWAYS" />
 
     <!-- Botões de Navegação -->
@@ -68,39 +68,31 @@
                 -fx-font-size: 20px;
                 -fx-text-fill: #0f1b13;
                 -fx-font-family: 'Poppins Light';
-                -fx-font-weight: italic;">
-        <cursor>
-            <Cursor fx:constant="HAND" />
-        </cursor>
+                -fx-font-weight: italic;
+                -fx-cursor: hand">
     </Button>
     <Button text="Sobre" onAction="#switchToSobre"
             style="-fx-background-color: transparent;
                 -fx-font-size: 20px;
                 -fx-text-fill: #0f1b13;
                 -fx-font-family: 'Poppins Light';
-                -fx-font-weight: italic;">
-        <cursor>
-            <Cursor fx:constant="HAND" />
-        </cursor>
+                -fx-font-weight: italic;
+                -fx-cursor: hand">
     </Button>
     <Button text="Meus Ingressos" onAction="#switchToMeusIngressos"
             style="-fx-background-color: transparent;
                 -fx-font-size: 20px;
                 -fx-text-fill: #0f1b13;
                 -fx-font-family: 'Poppins Light';
-                -fx-font-weight: italic;">
-        <cursor>
-            <Cursor fx:constant="HAND" />
-        </cursor>
+                -fx-font-weight: italic;
+                -fx-cursor: hand">
     </Button>
     <Button text="Cadastro Fidelidade" onAction="#switchToCadastroFidelidade"
             style="-fx-background-color: transparent;
                 -fx-font-size: 20px;
                 -fx-text-fill: #0f1b13;
                 -fx-font-family: 'Poppins Light';
-                -fx-font-weight: italic;">
-        <cursor>
-            <Cursor fx:constant="HAND" />
-        </cursor>
+                -fx-font-weight: italic;
+                -fx-cursor: hand">
     </Button>
 </HBox>

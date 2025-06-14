@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
@@ -14,6 +15,20 @@ public class ConfirmarController {
 
     @FXML
     private DatePicker dateNascimento;
+
+    private double total;
+
+    @FXML
+    private Label labelTotal;
+
+    public void setTotal(double total) {
+        this.total = total;
+        atualizarTotal();
+    }
+
+    private void atualizarTotal() {
+        labelTotal.setText(String.format("R$ %.2f", total));
+    }
 
     @FXML
     private void confirmarCompra(ActionEvent event) {
@@ -36,5 +51,4 @@ public class ConfirmarController {
             alert.showAndWait();
         }
     }
-
 }

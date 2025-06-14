@@ -2,12 +2,14 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.text.Text?>
 
 <VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
       alignment="TOP_CENTER" spacing="20"
       stylesheets="@style.css"
       styleClass="background-main"
-      fx:controller="br.teatroabc.controllers.FidelidadeController">
+      fx:controller="br.teatroabc.controllers.CadastroFidelidadeController">
 
     <!-- Navbar -->
     <VBox styleClass="padding-large">
@@ -15,20 +17,44 @@
     </VBox>
 
     <!-- Título da Tela -->
-    <Label fx:id="labelTitulo" text="Cadastro Fidelidade" styleClass="title-primary"/>
+    <Label fx:id="labelTitulo" text="Cadastro de Fidelidade" styleClass="title-primary"/>
 
-    <!-- Caixa Central -->
-    <VBox fx:id="mainBox" alignment="CENTER" maxWidth="700" maxHeight="800" styleClass="background-box, padding-large">
+    <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 10 20 20 20;">
+        <VBox spacing="60" alignment="TOP_CENTER" style="-fx-background-color: #f2eee9; -fx-padding: 0 200 200 200;">
 
-        <!-- Campos de Cadastro -->
-        <VBox fx:id="cadastroPane" alignment="CENTER" styleClass="background-box">
-            <TextField fx:id="txtNome" promptText="Nome" styleClass="text-forms, background-form"/>
-            <TextField fx:id="txtCPF" promptText="CPF" styleClass="text-forms, background-form"/>
-            <TextField fx:id="txtTelefone" promptText="Telefone" styleClass="text-forms, background-form"/>
-            <TextField fx:id="txtEndereco" promptText="Endereço" styleClass="text-forms, background-form"/>
-            <DatePicker fx:id="dateNascimento" promptText="Data de Nascimento" styleClass="text-forms, background-form"/>
-            <Button fx:id="btnCadastrar" onAction="#cadastrarCliente" text="Cadastrar" styleClass="button-primary" />
+            <!-- Caixa Central com título e conteúdo -->
+            <VBox maxWidth="900" maxHeight="800" spacing="20" alignment="CENTER" styleClass="background-box, padding-large">
+
+                <!-- Título "Bem-vindo" dentro da caixa -->
+                <Label text="🎉 Bem-vindo ao Programa de Fidelidade!" styleClass="title-secondary" wrapText="true" />
+
+                <!-- Conteúdo lado a lado -->
+                <HBox spacing="40" alignment="CENTER" styleClass="background-box">
+
+                    <!-- Texto Informativo à esquerda -->
+                    <VBox alignment="TOP_LEFT" spacing="15" maxWidth="400">
+                        <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                            <Text text="🌟 Acumule pontos a cada compra e troque por descontos ou brindes." style="-fx-font-weight: bold;" />
+                        </TextFlow>
+                        <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                            <Text text="💌 Tenha acesso antecipado a eventos especiais e promoções exclusivas." />
+                        </TextFlow>
+                        <TextFlow styleClass="text-body" style="-fx-text-alignment: justify; -fx-padding: 10;">
+                            <Text text="🔒 Cadastro rápido e simples para aproveitar todos os benefícios agora!" />
+                        </TextFlow>
+                    </VBox>
+
+                    <!-- Campos de Cadastro à direita -->
+                    <VBox fx:id="cadastroPane" alignment="CENTER" spacing="15" maxWidth="400" styleClass="background-box">
+                        <TextField fx:id="txtNome" promptText="Nome" styleClass="text-forms, background-form" />
+                        <TextField fx:id="txtCPF" promptText="CPF" styleClass="text-forms, background-form" />
+                        <TextField fx:id="txtTelefone" promptText="Telefone" styleClass="text-forms, background-form" />
+                        <TextField fx:id="txtEndereco" promptText="Endereço" styleClass="text-forms, background-form" />
+                        <DatePicker fx:id="dateNascimento" promptText="Data de Nascimento" styleClass="text-forms, background-form" />
+                        <Button fx:id="btnCadastrar" onAction="#cadastrarCliente" text="Cadastrar" styleClass="button-primary" />
+                    </VBox>
+                </HBox>
+            </VBox>
         </VBox>
-    </VBox>
+    </ScrollPane>
 </VBox>
-

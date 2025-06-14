@@ -26,6 +26,15 @@
     -fx-border-color: #f2eee9; /* Cor da borda */
 }
 
+.info-box {
+    -fx-background-color: #f9f5f0;
+    -fx-padding: 15;
+    -fx-border-color: #d7cdc2;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
 /* Títulos */
 .title-primary {
     -fx-font-family: 'Playfair Display';
@@ -49,6 +58,10 @@
     -fx-padding: 15;
     -fx-font-size: 22px;
     -fx-text-fill: #0f1b13;
+}
+
+.text-body-bold {
+    -fx-font-family: 'Poppins'; /* Verifique se 'Poppins' está instalada no sistema */
 }
 
 .text-poltronas {

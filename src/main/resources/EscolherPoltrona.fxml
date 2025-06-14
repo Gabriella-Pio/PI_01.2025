@@ -62,8 +62,8 @@
     </ScrollPane>
 
     <!-- Botão Avançar -->
-    <HBox alignment="CENTER" spacing="10">
-        <Button text="Avançar" styleClass="button-primary" onAction="#switchToConfirmar" />
+    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+        <Button fx:id="btnAvancar"  text="Avançar" styleClass="button-primary" onAction="#switchToConfirmar" />
     </HBox>
 
 </VBox>

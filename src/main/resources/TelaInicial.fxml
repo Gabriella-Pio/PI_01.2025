@@ -20,5 +20,5 @@
     </ImageView>
 
     <!-- Botão de Entrar -->
-    <Button fx:id="entrarButton" onAction="#switchToCadastroLogin" text="Entrar" styleClass="button-primary"/>
+    <Button fx:id="entrarButton" onAction="#switchToLoginEntrar" text="Entrar" styleClass="button-primary"/>
 </VBox>

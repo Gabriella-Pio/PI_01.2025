@@ -138,6 +138,15 @@ public class EscolherPoltronaController {
 
     @FXML
     public void switchToConfirmar(ActionEvent event) {
-        NavigationController.switchToTela("/Confirmar.fxml", event);
+        if (poltronasSelecionadas.size() < quantidadeIngressos) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleção Incompleta");
+            alert.setHeaderText("Número insuficiente de poltronas selecionadas");
+            alert.setContentText("Por favor, selecione todas as poltronas antes de continuar.");
+            alert.showAndWait();
+            return; // Interrompe a navegação
+        }
+        NavigationController.switchToTela("/Confirmar.fxml", event,
+                (ConfirmarController controller) -> controller.setTotal(total));
     }
 }

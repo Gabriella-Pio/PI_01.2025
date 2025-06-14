@@ -19,36 +19,40 @@
     <!-- Título Principal -->
     <Label text="Peças Disponíveis" styleClass="title-primary" />
 
-    <!-- Destaques -->
-    <HBox alignment="CENTER" spacing="20" maxWidth="1200" styleClass="highlight-section">
-        <!-- Card 1 -->
-        <VBox alignment="CENTER" spacing="10" styleClass="highlight-card" onMouseClicked="#switchToDetalhesPeca1">
-            <ImageView fitWidth="400" fitHeight="400" preserveRatio="true">
-                <image>
-                    <Image url="@Img/pecaRJ.jpg" />
-                </image>
-            </ImageView>
-            <Label text="Romeu e Julieta" styleClass="highlight-text" />
-        </VBox>
+    <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 10 20 20 20;">
+        <VBox spacing="60" alignment="TOP_CENTER" style="-fx-background-color: #f2eee9; -fx-padding: 0 200 200 200;">
+            <!-- Destaques -->
+            <HBox alignment="CENTER" spacing="20" maxWidth="1200" styleClass="highlight-section">
+                <!-- Card 1 -->
+                <VBox alignment="CENTER" spacing="10" styleClass="highlight-card" onMouseClicked="#handleCardClick" fx:id="peca1">
+                    <ImageView fitWidth="400" fitHeight="400" preserveRatio="true">
+                        <image>
+                            <Image url="@Img/pecaRJ.png" />
+                        </image>
+                    </ImageView>
+                    <Label text="Romeu e Julieta" styleClass="highlight-text" />
+                </VBox>
 
-        <!-- Card 2 -->
-        <VBox alignment="CENTER" spacing="10" styleClass="highlight-card" onMouseClicked="#switchToDetalhesPeca2">
-            <ImageView fitWidth="400" fitHeight="400" preserveRatio="true">
-                <image>
-                    <Image url="@Img/pecaHamlet.jpeg" />
-                </image>
-            </ImageView>
-            <Label text="Hamlet" styleClass="highlight-text" />
-        </VBox>
+                <!-- Card 2 -->
+                <VBox alignment="CENTER" spacing="10" styleClass="highlight-card" onMouseClicked="#handleCardClick" fx:id="peca2">
+                    <ImageView fitWidth="400" fitHeight="400" preserveRatio="true">
+                        <image>
+                            <Image url="@Img/pecaHamlet.png" />
+                        </image>
+                    </ImageView>
+                    <Label text="Hamlet" styleClass="highlight-text" />
+                </VBox>
 
-        <!-- Card 3 -->
-        <VBox alignment="CENTER" spacing="10" styleClass="highlight-card" onMouseClicked="#switchToDetalhesPeca3">
-            <ImageView fitWidth="400" fitHeight="400" preserveRatio="true">
-                <image>
-                    <Image url="@Img/pecaAlice.jpg" />
-                </image>
-            </ImageView>
-            <Label text="Alice no País das Maravilhas" styleClass="highlight-text" />
+                <!-- Card 3 -->
+                <VBox alignment="CENTER" spacing="10" styleClass="highlight-card" onMouseClicked="#handleCardClick" fx:id="peca3">
+                    <ImageView fitWidth="400" fitHeight="400" preserveRatio="true">
+                        <image>
+                            <Image url="@Img/pecaAlice.png" />
+                        </image>
+                    </ImageView>
+                    <Label text="Alice no País das Maravilhas" styleClass="highlight-text" />
+                </VBox>
+            </HBox>
         </VBox>
-    </HBox>
+    </ScrollPane>
 </VBox>

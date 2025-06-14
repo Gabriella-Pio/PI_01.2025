@@ -20,7 +20,7 @@
 
     <!-- Conteúdo -->
     <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 30;">
-        <VBox alignment="TOP_CENTER" spacing="40" styleClass="background-box" style="-fx-padding: 20;">
+        <VBox alignment="TOP_CENTER" spacing="40" styleClass="background-box" style="-fx-padding: 20; -fx-pref-width: 400; -fx-pref-height: 700">
 
             <!-- Título -->
             <Label fx:id="tituloPeca" text="Título da Peça" styleClass="title-primary" />
@@ -41,13 +41,13 @@
                     <!-- Escolher Dia -->
                     <VBox alignment="TOP_LEFT" spacing="10">
                         <Label text="Escolha o Dia:" styleClass="title-secondary" />
-                        <DatePicker fx:id="datePicker" promptText="Selecione o Dia" styleClass="text-forms, background-form" />
+                        <DatePicker fx:id="datePicker" promptText="Selecione o Dia" styleClass="text-forms, background-form" style="-fx-cursor: hand;"/>
                     </VBox>
 
                     <!-- Escolher Horário -->
                     <VBox alignment="TOP_LEFT" spacing="10">
                         <Label text="Escolha o Horário:" styleClass="title-secondary" />
-                        <ChoiceBox fx:id="choiceHorario" styleClass="text-forms, background-form">
+                        <ChoiceBox fx:id="choiceHorario" styleClass="text-forms, background-form" style="-fx-cursor: hand;">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
                                     <String fx:value="Manhã - 10h" />
@@ -61,7 +61,7 @@
                     <!-- Escolher Quantidade de Ingressos -->
                     <VBox alignment="TOP_LEFT" spacing="10">
                         <Label text="Quantidade de Ingressos:" styleClass="title-secondary" />
-                        <ChoiceBox fx:id="choiceQuantidadeIngressos" styleClass="text-forms, background-form">
+                        <ChoiceBox fx:id="choiceQuantidadeIngressos" styleClass="text-forms, background-form" style="-fx-cursor: hand;">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
                                     <String fx:value="1" />
@@ -80,12 +80,12 @@
                     </VBox>
                 </VBox>
             </HBox>
-
-            <!-- Botões de Ação -->
-            <HBox alignment="CENTER" spacing="20">
-                <Button fx:id="btnSelecionarPoltrona" text="Escolher Poltronas" onAction="#switchToEscolherPoltrona" style="-fx-pref-width: 350" styleClass="button-primary" />
-            </HBox>
         </VBox>
     </ScrollPane>
+
+    <!-- Botão de Ação (Fixo na Base da Tela) -->
+    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+        <Button fx:id="btnSelecionarPoltrona" text="Escolher Poltronas" onAction="#switchToEscolherPoltrona" style="-fx-pref-width: 350" styleClass="button-primary" />
+    </HBox>
 
 </VBox>
