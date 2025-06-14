@@ -35,6 +35,22 @@
     -fx-background-radius: 8;
 }
 
+/* popup-style.css */
+.popup-content {
+    -fx-padding: 20;
+    -fx-background-color: #f2eee9;
+    -fx-border-color: #3f3f3f;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 5);
+}
+
+.popup-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+}
+
 /* Títulos */
 .title-primary {
     -fx-font-family: 'Playfair Display';

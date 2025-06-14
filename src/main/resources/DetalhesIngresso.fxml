@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      alignment="CENTER" spacing="15"
+      stylesheets="@style.css"
+      styleClass="background-main"
+      fx:controller="br.teatroabc.controllers.DetalhesIngressoController">
+
+    <!-- Título -->
+    <Label text="Detalhes do Ingresso" styleClass="title-secondary" />
+
+    <!-- Informações do Ingresso -->
+    <Label fx:id="pecaLabel" text="Peça: " styleClass="text-body" />
+    <Label fx:id="diaEscolhidoLabel" text="Dia: " styleClass="text-body" />
+    <Label fx:id="sessaoLabel" text="Sessão: " styleClass="text-body" />
+    <Label fx:id="areaLabel" text="Área: " styleClass="text-body" />
+    <Label fx:id="poltronaLabel" text="Poltrona: " styleClass="text-body" />
+</VBox>
