@@ -34,6 +34,11 @@ public class AdminNavBarController {
     }
 
     @FXML
+    public void switchToPrincipal(ActionEvent event) {
+        NavigationController.switchToTela("/Adm/Principal.fxml", event);
+    }
+
+    @FXML
     public void voltar(ActionEvent event) {
         NavigationController.voltar(event);
     }

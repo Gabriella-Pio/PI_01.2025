@@ -1,10 +1,14 @@
 package br.teatroabc.controllers.Adm;
 
-import br.teatroabc.utils.CSVUtils;
+import br.teatroabc.Models.ItemVenda;
+import br.teatroabc.utils.EstatisticasService;
+import com.opencsv.exceptions.CsvException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -12,156 +16,128 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.nio.file.Paths;
+import java.text.NumberFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class EstatisticasLucrosController {
 
     @FXML
     private Label labelPecaMaisLucrativa;
-
     @FXML
     private Label labelSessaoMaisLucrativa;
-
     @FXML
     private BarChart<String, Number> graficoLucros;
+    @FXML
+    private CategoryAxis eixoX;
+    @FXML
+    private NumberAxis eixoY;
+    @FXML
+    private TableView<LucroEstatistica> tabelaLucros;
+    @FXML
+    private TableColumn<LucroEstatistica, String> colunaPeca;
+    @FXML
+    private TableColumn<LucroEstatistica, String> colunaSessao;
+    @FXML
+    private TableColumn<LucroEstatistica, String> colunaLucro;
+
+    private EstatisticasService estatisticasService;
+    private NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
     @FXML
-    private TableView<Lucro> tabelaLucros;
-
-    @FXML
-    private TableColumn<Lucro, String> colunaPeca;
-
-    @FXML
-    private TableColumn<Lucro, String> colunaSessao;
-
-    @FXML
-    private TableColumn<Lucro, Double> colunaLucro;
-
-   static class Ticket {
-        String poltronaId;
-        String areaId;
-        String sessaoId;
-        String pecaId;
-        String vendaId;
-
-        public Ticket(String poltronaId, String areaId, String sessaoId, String pecaId, String vendaId) {
-            this.poltronaId = poltronaId;
-            this.areaId = areaId;
-            this.sessaoId = sessaoId;
-            this.pecaId = pecaId;
-            this.vendaId = vendaId;
-        }
-    }
-
-//    public static void main(String[] args) {
-//        String filePath = "path/to/your/file.csv";
-//
-//
-//        try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
-//            List<String[]> rows = reader.readAll();
-//            rows.stream().skip(1).forEach(row -> tickets.add(new Ticket(row[1], row[2], row[3], row[4], row[5])));
-//        } catch (IOException | CsvException e) {
-//            e.printStackTrace();
-//            return;
-//        }
-
-    public void initialize() throws IOException {
-        List<Ticket> tickets = new ArrayList<>();
-        Map<String, Double> areaPrices = Map.of(
-                "PA", 40.0, // Plateia A
-                "PB", 60.0, // Plateia B
-                "FC", 120.0, // Frisa Central
-                "FB", 120.0, // Frisa Balcão
-                "CD", 80.0, // Camarote
-                "BN", 250.0 // Balcão Nobre
-        );
-
-//        List Linhas = CSVUtils.readCSV(0);
-//        Linhas.stream().skip(1).forEach(row -> tickets.add(new Ticket(row[1], row[2], row[3], row[4], row[5])));
-
-        // Total tickets by piece
-        Map<String, Long> ticketsByPeca = tickets.stream()
-                .collect(Collectors.groupingBy(ticket -> ticket.pecaId, Collectors.counting()));
-
-        // Most and least tickets by piece
-        String mostSoldPeca = ticketsByPeca.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey();
-        String leastSoldPeca = ticketsByPeca.entrySet().stream().min(Map.Entry.comparingByValue()).get().getKey();
-
-        // Tickets by session
-        Map<String, Long> ticketsBySessao = tickets.stream()
-                .collect(Collectors.groupingBy(ticket -> ticket.sessaoId, Collectors.counting()));
-
-        // Most and least occupied sessions
-        String mostOccupiedSession = ticketsBySessao.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey();
-        String leastOccupiedSession = ticketsBySessao.entrySet().stream().min(Map.Entry.comparingByValue()).get().getKey();
-
-        // Revenue by piece
-        Map<String, Double> revenueByPeca = tickets.stream()
-                .collect(Collectors.groupingBy(ticket -> ticket.pecaId,
-                        Collectors.summingDouble(ticket -> areaPrices.getOrDefault(ticket.areaId, 0.0))));
-
-        // Revenue by session
-        Map<String, Double> revenueBySessao = tickets.stream()
-                .collect(Collectors.groupingBy(ticket -> ticket.sessaoId,
-                        Collectors.summingDouble(ticket -> areaPrices.getOrDefault(ticket.areaId, 0.0))));
-
-        // Average revenue per piece
-        double averageRevenuePerPiece = revenueByPeca.values().stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
-
-        // Total and average revenue by area
-        Map<String, Double> revenueByArea = tickets.stream()
-                .collect(Collectors.groupingBy(ticket -> ticket.areaId,
-                        Collectors.summingDouble(ticket -> areaPrices.getOrDefault(ticket.areaId, 0.0))));
-        double averageRevenueByArea = revenueByArea.values().stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
-
-        // Average ticket value per customer
-        long totalTicketsSold = tickets.size();
-        double totalRevenue = tickets.stream().mapToDouble(ticket -> areaPrices.getOrDefault(ticket.areaId, 0.0)).sum();
-        double averageTicketValue = totalTicketsSold == 0 ? 0 : totalRevenue / totalTicketsSold;
-
-
-        // Dados de exemplo
-        ObservableList<Lucro> lucros = FXCollections.observableArrayList(
-                new Lucro("Peça 1", "Sessão 1", 5000.00),
-                new Lucro("Peça 2", "Sessão 2", 10000.00),
-                new Lucro("Peça 3", "Sessão 3", 7500.00)
-        );
-
-        // Preencher tabela
+    public void initialize() {
+        // Configure table columns
         colunaPeca.setCellValueFactory(new PropertyValueFactory<>("peca"));
         colunaSessao.setCellValueFactory(new PropertyValueFactory<>("sessao"));
-        colunaLucro.setCellValueFactory(new PropertyValueFactory<>("lucro"));
-        tabelaLucros.setItems(lucros);
+        colunaLucro.setCellValueFactory(new PropertyValueFactory<>("lucroFormatado"));
 
-        // Preencher gráfico
-        XYChart.Series<String, Number> serieLucros = new XYChart.Series<>();
-        for (Lucro lucro : lucros) {
-            serieLucros.getData().add(new XYChart.Data<>(lucro.getPeca(), lucro.getLucro()));
-        }
-        graficoLucros.getData().add(serieLucros);
+        // Configure chart axes
+        eixoX.setLabel("Peças");
+        eixoY.setLabel("Lucro Total (R$)");
 
-        // Definir peça e sessão mais lucrativa
-        Lucro maisLucrativa = lucros.stream().max((l1, l2) -> Double.compare(l1.getLucro(), l2.getLucro())).orElse(null);
+        carregarDados();
+    }
 
-        if (maisLucrativa != null) {
-            labelPecaMaisLucrativa.setText(maisLucrativa.getPeca() + ": R$ " + maisLucrativa.getLucro());
-            labelSessaoMaisLucrativa.setText(maisLucrativa.getSessao() + ": R$ " + maisLucrativa.getLucro());
+    private void carregarDados() {
+        try {
+            String clienteCSVPath = Paths.get("data/BD/Cliente.csv").toAbsolutePath().toString();
+            String vendaCSVPath = Paths.get("data/BD/Venda.csv").toAbsolutePath().toString();
+            String itemVendaCSVPath = Paths.get("data/BD/ItemVenda.csv").toAbsolutePath().toString();
+
+            estatisticasService = new EstatisticasService(clienteCSVPath, vendaCSVPath, itemVendaCSVPath);
+            atualizarEstatisticas();
+        } catch (IOException | CsvException e) {
+            e.printStackTrace();
+            // Handle error (show alert to user)
         }
     }
 
-    // Classe auxiliar para representar os dados de lucro
-    public static class Lucro {
+    private void atualizarEstatisticas() {
+        if (estatisticasService == null) return;
+
+        // Get revenue by play
+        Map<String, Double> receitaPorPeca = estatisticasService.getReceitaPorPeca();
+
+        // Get revenue by session (date + play)
+        Map<String, Double> receitaPorSessao = estatisticasService.getItensVenda().stream()
+                .collect(Collectors.groupingBy(
+                        item -> item.getTurnoSessao() + " - " + item.getPecaId(),
+                        Collectors.summingDouble(item -> estatisticasService.PRECO_POR_AREA.getOrDefault(item.getAreaId(), 0.0))
+                ));
+
+        // Find most profitable play
+        Optional<Map.Entry<String, Double>> pecaMaisLucrativa = receitaPorPeca.entrySet()
+                .stream().max(Map.Entry.comparingByValue());
+
+        // Find most profitable session
+        Optional<Map.Entry<String, Double>> sessaoMaisLucrativa = receitaPorSessao.entrySet()
+                .stream().max(Map.Entry.comparingByValue());
+
+        // Update labels
+        pecaMaisLucrativa.ifPresent(entry ->
+                labelPecaMaisLucrativa.setText(entry.getKey() + ": " + currencyFormat.format(entry.getValue())));
+
+        sessaoMaisLucrativa.ifPresent(entry -> {
+            String[] parts = entry.getKey().split(" - ");
+            labelSessaoMaisLucrativa.setText(parts[1] + " (" + parts[0] + "): " + currencyFormat.format(entry.getValue()));
+        });
+
+        // Update chart with plays revenue
+        XYChart.Series<String, Number> serieLucros = new XYChart.Series<>();
+        serieLucros.setName("Lucro por Peça");
+
+        receitaPorPeca.forEach((peca, lucro) ->
+                serieLucros.getData().add(new XYChart.Data<>(peca, lucro)));
+
+        graficoLucros.getData().clear();
+        graficoLucros.getData().add(serieLucros);
+
+        // Update table with session revenue details
+        ObservableList<LucroEstatistica> dadosTabela = FXCollections.observableArrayList();
+
+        receitaPorSessao.forEach((sessaoKey, lucro) -> {
+            String[] parts = sessaoKey.split(" - ");
+            String data = parts.length > 0 ? parts[0] : "";
+            String peca = parts.length > 1 ? parts[1] : "";
+
+            dadosTabela.add(new LucroEstatistica(peca, data, lucro, currencyFormat));
+        });
+
+        tabelaLucros.setItems(dadosTabela);
+    }
+
+    public static class LucroEstatistica {
         private final String peca;
         private final String sessao;
         private final double lucro;
+        private final String lucroFormatado;
 
-        public Lucro(String peca, String sessao, double lucro) {
+        public LucroEstatistica(String peca, String sessao, double lucro, NumberFormat format) {
             this.peca = peca;
             this.sessao = sessao;
             this.lucro = lucro;
+            this.lucroFormatado = format.format(lucro);
         }
 
         public String getPeca() {
@@ -174,6 +150,10 @@ public class EstatisticasLucrosController {
 
         public double getLucro() {
             return lucro;
+        }
+
+        public String getLucroFormatado() {
+            return lucroFormatado;
         }
     }
 }

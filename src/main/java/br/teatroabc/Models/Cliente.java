@@ -78,18 +78,29 @@ public class Cliente {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Cliente(){
-        this.id = GeneralUse.getIdClienteCounter()+1;
+        this.id = GeneralUse.getIdClienteCounter();
     }
 
 
     public Cliente(String nome, String CPF, LocalDate dataNasc, String telefone, String endereco) {
-        this.id = GeneralUse.getIdClienteCounter()+1;
+        this.id = GeneralUse.getIdClienteCounter();
         this.nome = nome;
         this.CPF = CPF;
         this.DataNasc = dataNasc;
         this.telefone = telefone;
         this.endereco = endereco;
     }
-
+    public Cliente(int id, String nome, String CPF, String dataNasc, String telefone, String endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.CPF = CPF;
+        this.DataNasc = LocalDate.parse(dataNasc);
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
 }

@@ -7,14 +7,19 @@ public class Venda {
     int idCliente;
 
     public Venda(int idCliente) {
-        this.id = GeneralUse.getIdVendaCounter()+1;
+        this.id = GeneralUse.getIdVendaCounter();
+        this.idCliente = idCliente;
+    }
+
+    public Venda( int i,int idCliente) {
+        this.id = i;
         this.idCliente = idCliente;
     }
 
     public String[] parseToCsv(){
         String[] csvLine = new String[2];
-        csvLine[0] = Integer.toString(this.idCliente);
-        csvLine[1] = Integer.toString(this.id);
+        csvLine[0] = Integer.toString(this.id);
+        csvLine[1] = Integer.toString(this.idCliente);
         return csvLine;
     }
 

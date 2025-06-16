@@ -58,13 +58,13 @@ public class Main extends Application {
         String[] caminho = {"data", "BD"};
 
         Path caminhoCSVVenda = Paths.get(caminho[0], caminho[1], "Venda.csv");
-        String headerVenda = "Id,IdCliente,IdItemVenda";
+        String headerVenda = "Id,IdCliente";
 
         Path caminhoCSVItemVenda = Paths.get(caminho[0], caminho[1], "ItemVenda.csv");
         String headerItemVenda = "id,poltronaId,areaId,sessaoId,pecaId,vendaId";
 
         Path caminhoCSVCliente = Paths.get(caminho[0], caminho[1], "Cliente.csv");
-        String headerCliente = "id,nome,dataNascimento,telefone,endereco";
+        String headerCliente = "id,nome,CPF,dataNascimento,telefone,endereco";
 
         createFileIfNotExists(caminhoCSVVenda, headerVenda);
         createFileIfNotExists(caminhoCSVItemVenda, headerItemVenda);

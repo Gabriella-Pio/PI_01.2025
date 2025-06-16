@@ -17,9 +17,56 @@
     <!-- Título -->
     <Label text="Estatísticas de Vendas" styleClass="title-primary" />
 
-    <!-- Resumo Geral -->
-    <VBox alignment="CENTER" spacing="20" styleClass="padding-large">
-        <Label text="Resumo Geral" styleClass="title-secondary" />
-        <Label fx:id="resumoGeralLabel" text="Aqui ficará o resumo das principais estatísticas." styleClass="text-body" />
-    </VBox>
+    <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 10 20 20 20;">
+        <VBox spacing="60" alignment="TOP_CENTER" style="-fx-background-color: #f2eee9; -fx-padding: 0 200 200 200;">
+            <!-- Resumo Geral -->
+            <VBox alignment="CENTER" spacing="20" styleClass="padding-large">
+
+                <!-- Receita Média Por Área -->
+                <Label text="Receita Média Por Área" styleClass="title-secondary" />
+                <VBox styleClass="background-box">
+                    <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="350">
+                        <content>
+                            <TableView fx:id="tabelaResumoArea" prefHeight="300">
+                                <columns>
+                                    <TableColumn text="Área" fx:id="nomeArea" />
+                                    <TableColumn text="Receita Média" fx:id="receita" />
+                                </columns>
+                            </TableView>
+                        </content>
+                    </ScrollPane>
+                </VBox>
+
+                <!-- Lucro Médio Por Peça -->
+                <Label text="Lucro Médio Por Peça" styleClass="title-secondary" />
+                <VBox styleClass="background-box">
+                    <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="350">
+                        <content>
+                            <TableView fx:id="tabelaResumoPeca" prefHeight="300">
+                                <columns>
+                                    <TableColumn text="Título" fx:id="nomePeca" />
+                                    <TableColumn text="Lucro Médio" fx:id="lucroMedio" />
+                                </columns>
+                            </TableView>
+                        </content>
+                    </ScrollPane>
+                </VBox>
+
+                <!-- Ticket Médio Por Cliente -->
+                <Label text="Ticket Médio Por Cliente" styleClass="title-secondary" />
+                <VBox styleClass="background-box">
+                    <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="350">
+                        <content>
+                            <TableView fx:id="tabelaResumoCliente" prefHeight="300">
+                                <columns>
+                                    <TableColumn text="CPF" fx:id="cpfCliente" />
+                                    <TableColumn text="Ticket Médio" fx:id="ticketMedio" />
+                                </columns>
+                            </TableView>
+                        </content>
+                    </ScrollPane>
+                </VBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
 </VBox>

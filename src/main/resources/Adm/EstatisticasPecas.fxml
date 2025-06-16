@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.chart.*?>
 
+<?import javafx.scene.control.skin.SplitPaneSkin.Content?>
 <VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
       alignment="TOP_CENTER" spacing="20"
       stylesheets="@../style.css"
@@ -18,20 +19,32 @@
     <!-- Título -->
     <Label text="Estatísticas de Peças" styleClass="title-primary" />
 
-    <!-- Gráfico de Vendas por Peça -->
-    <BarChart fx:id="graficoVendasPorPeca" title="Ingressos Vendidos por Peça">
-        <xAxis>
-            <CategoryAxis label="Peças" />
-        </xAxis>
-        <yAxis>
-            <NumberAxis label="Ingressos Vendidos" />
-        </yAxis>
-    </BarChart>
+    <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 10 20 20 20;">
+        <VBox spacing="60" alignment="TOP_CENTER" style="-fx-background-color: #f2eee9; -fx-padding: 0 200 200 200;">
+            <!-- Gráfico de Vendas por Peça -->
+            <Label text="Vendas por Peça" styleClass="title-secondary" />
 
-    <!-- Indicadores -->
-    <VBox alignment="CENTER" spacing="10">
-        <Label text="Indicadores" styleClass="title-secondary" />
-        <Label fx:id="pecaMaisVendidaLabel" text="Peça mais vendida: ..." styleClass="text-body" />
-        <Label fx:id="pecaMenosVendidaLabel" text="Peça menos vendida: ..." styleClass="text-body" />
-    </VBox>
+            <VBox styleClass="background-box">
+                <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="350">
+                    <content>
+                        <BarChart fx:id="graficoVendasPorPeca" title="Ingressos Vendidos por Peça" animated="true">
+                            <xAxis>
+                                <CategoryAxis fx:id="eixoX" label="Peças" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="eixoY" label="Ingressos Vendidos" />
+                            </yAxis>
+                        </BarChart>
+                    </content>
+                </ScrollPane>
+            </VBox>
+
+                <!-- Indicadores -->
+                <VBox alignment="CENTER" spacing="10" styleClass="padding-large">
+                    <Label text="Indicadores" styleClass="title-secondary" />
+                    <Label fx:id="pecaMaisVendidaLabel" text="Peça mais vendida: ..." styleClass="text-body" />
+                    <Label fx:id="pecaMenosVendidaLabel" text="Peça menos vendida: ..." styleClass="text-body" />
+                </VBox>
+        </VBox>
+    </ScrollPane>
 </VBox>

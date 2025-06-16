@@ -25,15 +25,30 @@ public class LoginController {
             alert.setHeaderText("Campos Obrigatórios Não Preenchidos");
             alert.setContentText("Por favor, preencha o campo de usuário e senha antes de continuar.");
             alert.showAndWait();
-        } else {
+            return;
+        }
+        if (!(usuario.equals("42")) || !(senha.equals("CELG"))) {
+            // Exibe alerta de erro se os campos não estiverem preenchidos
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro de Login");
+            alert.setHeaderText("Usuário ou Senha Incorretos");
+            alert.setContentText("Acesso Negado");
+            alert.showAndWait();
+            return;
+        }
             // Se os campos estiverem preenchidos, faz a navegação
             switchToAdm(event);
-        }
+
     }
 
     @FXML
     private void switchToAdm(ActionEvent event) {
         NavigationController.switchToTela("/Adm/Principal.fxml", event);
+    }
+
+    @FXML
+    public void voltar(ActionEvent event) {
+        NavigationController.voltar(event);
     }
 
 }

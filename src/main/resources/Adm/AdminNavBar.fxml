@@ -63,6 +63,16 @@
     <Region HBox.hgrow="ALWAYS" />
 
     <!-- Botões de Navegação -->
+    <Button text="Geral" onAction="#switchToPrincipal"
+            style="-fx-background-color: transparent;
+                -fx-font-size: 20px;
+                -fx-text-fill: #532920;
+                -fx-font-family: 'Poppins Light';
+                -fx-font-weight: italic;">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
     <Button text="Peças" onAction="#switchToEstatisticasPecas"
             style="-fx-background-color: transparent;
                 -fx-font-size: 20px;

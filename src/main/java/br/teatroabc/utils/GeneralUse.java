@@ -1,19 +1,54 @@
 package br.teatroabc.utils;
 
+import java.util.List;
+
 public class GeneralUse {
 
     public static int getIdClienteCounter() {
-        //todo Pegar O ultimo ID do CSV
-        return 0;
+        // Take the last ID from the CSV at data/BD/Cliente.csv
+        try {
+            List<String[]> rows = CSVUtils.readCSV(0); // Index 0 for Cliente.csv
+            if (rows.isEmpty()) {
+                return 1; // Return 1 if CSV is empty
+            }
+            String[] lastRow = rows.get(rows.size() - 1); // Get the last row
+            return Integer.parseInt(lastRow[0]) + 1; // Increment last ID by 1
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1; // Default to 1 in case of an error
+        }
     }
 
     public static int getIdItemVendaCounter() {
-        return 0;
+        // Take the last ID from the CSV at data/BD/ItemVenda.csv
+        try {
+            List<String[]> rows = CSVUtils.readCSV(2); // Index 2 for ItemVenda.csv
+            if (rows.isEmpty()) {
+                return 1; // Return 1 if CSV is empty
+            }
+            String[] lastRow = rows.get(rows.size() - 1); // Get the last row
+            return Integer.parseInt(lastRow[0]) + 1; // Increment last ID by 1
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1; // Default to 1 in case of an error
+        }
     }
 
     public static int getIdVendaCounter() {
-        return 0;
+        // Take the last ID from the CSV at data/BD/Venda.csv
+        try {
+            List<String[]> rows = CSVUtils.readCSV(1); // Index 1 for Venda.csv
+            if (rows.isEmpty()) {
+                return 1; // Return 1 if CSV is empty
+            }
+            String[] lastRow = rows.get(rows.size() - 1); // Get the last row
+            return Integer.parseInt(lastRow[0]) + 1; // Increment last ID by 1
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1; // Default to 1 in case of an error
+        }
     }
+
     public static boolean isCPFValid(String cpf) {
         // Remove caracteres não numéricos
         cpf = cpf.replaceAll("\\D", "");

@@ -18,41 +18,56 @@
     <!-- Título -->
     <Label text="Estatísticas de Lucros" styleClass="title-primary" />
 
-    <!-- Conteúdo Principal -->
-    <VBox alignment="CENTER" spacing="20">
-        <!-- Informações Resumidas -->
-        <HBox alignment="CENTER" spacing="50">
-            <VBox alignment="CENTER" spacing="10">
-                <Label text="Peça Mais Lucrativa" styleClass="title-secondary" />
-                <Label fx:id="labelPecaMaisLucrativa" text="Peça X: R$ 10.000,00" styleClass="text-body" />
-            </VBox>
-            <VBox alignment="CENTER" spacing="10">
-                <Label text="Sessão Mais Lucrativa" styleClass="title-secondary" />
-                <Label fx:id="labelSessaoMaisLucrativa" text="Sessão Y: R$ 5.000,00" styleClass="text-body" />
-            </VBox>
-        </HBox>
+    <ScrollPane fitToWidth="true" style="-fx-background-color: #f2eee9; -fx-padding: 10 20 20 20;">
+        <VBox spacing="60" alignment="TOP_CENTER" style="-fx-background-color: #f2eee9; -fx-padding: 0 200 200 200;">
+            <!-- Conteúdo Principal -->
+            <VBox alignment="CENTER" spacing="20">
 
-        <!-- Gráfico de Lucros por Peça -->
-        <VBox alignment="CENTER" spacing="20">
-            <Label text="Lucros por Peça" styleClass="title-secondary" />
-            <BarChart fx:id="graficoLucros" title="Lucros por Peça" animated="true">
-                <xAxis>
-                    <CategoryAxis fx:id="eixoX" label="Peças" />
-                </xAxis>
-                <yAxis>
-                    <NumberAxis fx:id="eixoY" label="Lucro Total (R$)" />
-                </yAxis>
-            </BarChart>
+                <!-- Informações Resumidas -->
+                <HBox alignment="CENTER" spacing="50">
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Peça Mais Lucrativa" styleClass="title-secondary" />
+                        <Label fx:id="labelPecaMaisLucrativa" text="Peça X: R$ 10.000,00" styleClass="text-body" />
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Sessão Mais Lucrativa" styleClass="title-secondary" />
+                        <Label fx:id="labelSessaoMaisLucrativa" text="Sessão Y: R$ 5.000,00" styleClass="text-body" />
+                    </VBox>
+                </HBox>
+
+                <!-- Gráfico de Lucros por Peça -->
+                <Label text="Lucros por Peça" styleClass="title-secondary" />
+                <VBox styleClass="background-box">
+                    <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="350">
+                        <content>
+                            <BarChart fx:id="graficoLucros" title="Lucros por Peça" animated="true">
+                                <xAxis>
+                                    <CategoryAxis fx:id="eixoX" label="Peças" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="eixoY" label="Lucro Total (R$)" />
+                                </yAxis>
+                            </BarChart>
+                        </content>
+                    </ScrollPane>
+                </VBox>
+
+                <!-- Tabela Resumo -->
+                <Label text="Resumo de Lucros por Peça" styleClass="title-secondary" />
+                <VBox styleClass="background-box">
+                    <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="350">
+                        <content>
+                            <TableView fx:id="tabelaLucros">
+                                <columns>
+                                    <TableColumn text="Peça" fx:id="colunaPeca" />
+                                    <TableColumn text="Sessão" fx:id="colunaSessao" />
+                                    <TableColumn text="Lucro Total (R$)" fx:id="colunaLucro" />
+                                </columns>
+                            </TableView>
+                        </content>
+                    </ScrollPane>
+                </VBox>
+            </VBox>
         </VBox>
-
-        <!-- Tabela Resumo -->
-        <Label text="Resumo de Lucros por Peça" styleClass="title-secondary" />
-        <TableView fx:id="tabelaLucros">
-            <columns>
-                <TableColumn text="Peça" fx:id="colunaPeca" />
-                <TableColumn text="Sessão" fx:id="colunaSessao" />
-                <TableColumn text="Lucro Total (R$)" fx:id="colunaLucro" />
-            </columns>
-        </TableView>
-    </VBox>
+    </ScrollPane>
 </VBox>

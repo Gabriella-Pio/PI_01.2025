@@ -4,29 +4,25 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class DetalhesIngressoController {
+    @FXML private Label pecaLabel;
+    @FXML private Label dataLabel;
+    @FXML private Label turnoLabel;
+    @FXML private Label areaLabel;
+    @FXML private Label poltronaLabel;
 
-    @FXML
-    private Label pecaLabel;
+    public void setTicketDetails(String peca, String dataSessao, String turnoSessao, String area, String poltrona) {
+        if (pecaLabel != null) pecaLabel.setText("Peça: " + peca);
+        if (dataLabel != null) dataLabel.setText("Data: " + dataSessao);
+        if (turnoLabel != null) turnoLabel.setText("Turno: " + turnoSessao);
+        if (areaLabel != null) areaLabel.setText("Área: " + area);
+        if (poltronaLabel != null) poltronaLabel.setText("Poltrona: " + poltrona);
 
-    @FXML
-    private Label diaEscolhidoLabel;
-
-    @FXML
-    private Label sessaoLabel;
-
-    @FXML
-    private Label areaLabel;
-
-    @FXML
-    private Label poltronaLabel;
-//todo Ler CSV e filtrar por CPF os detalhes
-    public void setDetalhes(String peca, String diaEscolhido, String sessao, String area, String poltrona) {
-
-
-        pecaLabel.setText("Peça: ...... " + peca);
-        diaEscolhidoLabel.setText("Data: ........ " + diaEscolhido);
-        sessaoLabel.setText("Sessão: .......... " + sessao);
-        areaLabel.setText("Área: .......... " + area);
-        poltronaLabel.setText("Poltrona: ........... " + poltrona);
+        // Debug output
+        System.out.println("Labels initialized: " +
+                "\npecaLabel: " + (pecaLabel != null) +
+                "\ndataLabel: " + (dataLabel != null) +
+                "\nturnoLabel: " + (turnoLabel != null) +
+                "\nareaLabel: " + (areaLabel != null) +
+                "\npoltronaLabel: " + (poltronaLabel != null));
     }
 }
