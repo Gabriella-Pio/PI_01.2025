@@ -52,11 +52,10 @@ public class DetalhesPecaController {
         String selectedIngressos = choiceQuantidadeIngressos.getValue();
 
         State selecionado = Controller.getCurrentState();
-        // Extract just the time period (Manhã/Tarde/Noite) without the hour
-        String turno = selectedHorario.split(" - ")[0];
-        selecionado.setTurno(turno);
+        selecionado.setTurno(selectedHorario);
         selecionado.setSessao(selectedDate.toString());
         Controller.setCurrentState(selecionado);
+
 
         if (selectedDate == null || selectedHorario == null || selectedIngressos == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
