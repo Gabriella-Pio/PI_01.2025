@@ -6,6 +6,7 @@ import br.teatroabc.Models.Venda;
 import br.teatroabc.utils.CSVUtils; // Não usado diretamente, mas pode ser para EstatisticasService
 import br.teatroabc.utils.EstatisticasService; // Serviço para carregar dados de CSVs
 import br.teatroabc.utils.GeneralUse; // Utilitários gerais, como validação de CPF
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -66,8 +67,9 @@ public class MeusIngressosController {
         // Adiciona um listener para quando um item na lista de ingressos é selecionado
         ingressosList.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
-                // Se um novo item for selecionado, abre os detalhes desse ingresso
                 openTicketDetails(newVal);
+                // Limpa imediatamente após processar o clique
+                Platform.runLater(() -> ingressosList.getSelectionModel().clearSelection());
             }
         });
     }
@@ -104,6 +106,9 @@ public class MeusIngressosController {
             stage.setHeight(500); // Define altura
 
             stage.show(); // Exibe a nova janela
+
+            // Limpa a seleção após abrir os detalhes
+            ingressosList.getSelectionModel().clearSelection();
         } catch (IOException e) {
             e.printStackTrace(); // Imprime o erro no console
             showAlert("Erro", "Não foi possível abrir os detalhes do ingresso."); // Exibe alerta ao usuário
@@ -195,9 +200,13 @@ public class MeusIngressosController {
             // 7. Formata os ingressos para exibição e popula o mapa
             ObservableList<String> ingressosFormatados = FXCollections.observableArrayList();
             for (ItemVenda ingresso : ingressos) {
-                String displayInfo = String.format("%s - %s", // Formato de exibição
+                // Create a more detailed display string that includes unique identifiers
+                String displayInfo = String.format("%s | %s | %s | %s | Poltrona %s",
                         ingresso.getPecaId(),
-                        ingresso.getDataSessao());
+                        ingresso.getTurnoSessao(),
+                        ingresso.getDataSessao(),
+                        ingresso.getAreaId(),
+                        ingresso.getPoltronaId());
 
                 ingressosFormatados.add(displayInfo);
                 ticketMap.put(displayInfo, ingresso); // Associa string formatada ao objeto ItemVenda
