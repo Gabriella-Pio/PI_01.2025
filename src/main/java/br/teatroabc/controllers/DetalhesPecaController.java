@@ -1,5 +1,6 @@
 package br.teatroabc.controllers;
 
+import br.teatroabc.utils.State;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -49,6 +50,12 @@ public class DetalhesPecaController {
         LocalDate selectedDate = datePicker.getValue();
         String selectedHorario = choiceHorario.getValue();
         String selectedIngressos = choiceQuantidadeIngressos.getValue();
+
+        State selecionado = Controller.getCurrentState();
+        selecionado.setTurno(selectedHorario);
+        selecionado.setSessao(selectedDate.toString());
+        Controller.setCurrentState(selecionado);
+
 
         if (selectedDate == null || selectedHorario == null || selectedIngressos == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

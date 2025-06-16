@@ -1,5 +1,7 @@
 package br.teatroabc.controllers;
 
+import br.teatroabc.Models.ItemVenda;
+import br.teatroabc.utils.State;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -10,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,15 +30,15 @@ public class EscolherPoltronaController {
     private Label labelTotal;
 
     private int quantidadeIngressos;
-    private final Set<String> poltronasSelecionadas = new HashSet<>();
+    private final ArrayList<String> poltronasSelecionadas = new ArrayList<String>();
     private double total = 0.0;
 
     private final DecimalFormat formatador = new DecimalFormat("R$ #,##0.00");
 
     @FXML
     public void initialize() {
-        configurarSecao(plateiaASection, "A", 25, 13, 40.00);
-        configurarSecao(plateiaBSection, "B", 100, 15, 60.00);
+        configurarSecao(plateiaASection, "PA", 25, 13, 40.00);
+        configurarSecao(plateiaBSection, "PB", 100, 15, 60.00);
         configurarFrisa();
         configurarCamarote();
         configurarSecao(balcaoNobreSection, "BN", 50, 18, 250.00);
@@ -62,6 +65,7 @@ public class EscolherPoltronaController {
     }
 
     private void configurarFrisaLado(VBox section, String prefixo, int inicio, int fim, boolean esquerda, double preco) {
+        char[] abc = "ABCDEF".toCharArray();
         for (int i = inicio; i <= fim; i += 2) {
             VBox grupo = new VBox(5);
             grupo.setAlignment(Pos.CENTER);
@@ -73,7 +77,7 @@ public class EscolherPoltronaController {
                 int fimBotao = linha * 3 - (linha == 2 ? 1 : 0);
 
                 for (int j = inicioBotao; j <= fimBotao; j++) {
-                    criarBotao(hboxLinha, prefixo + " " + i + "-" + j, preco);
+                    criarBotao(hboxLinha, prefixo + abc[i-1] + " " + j, preco);
                 }
                 grupo.getChildren().add(hboxLinha);
             }
@@ -84,7 +88,7 @@ public class EscolherPoltronaController {
     private void configurarCamarote() {
         HBox layoutCamarotes = new HBox(20);
         layoutCamarotes.setAlignment(Pos.CENTER);
-
+        char[] abc = "ABCDEF".toCharArray();
         for (int i = 1; i <= 5; i++) {
             VBox camarote = new VBox(10);
             camarote.setAlignment(Pos.CENTER);
@@ -95,7 +99,7 @@ public class EscolherPoltronaController {
                 int fimBotao = linha * 4 - (linha == 3 ? 2 : 0);
 
                 for (int j = inicioBotao; j <= fimBotao; j++) {
-                    criarBotao(hboxLinha, "C " + i + "-" + j, 80.00);
+                    criarBotao(hboxLinha, "C" + abc[i] + " " + j, 80.00);
                 }
                 camarote.getChildren().add(hboxLinha);
             }
@@ -146,6 +150,17 @@ public class EscolherPoltronaController {
             alert.showAndWait();
             return; // Interrompe a navegação
         }
+
+        State selecionado = Controller.getCurrentState();
+        poltronasSelecionadas.forEach((poltronaId) -> {
+            String num = poltronaId.substring(3);
+            String Prefix = poltronaId.substring(0, 2);
+            selecionado.getVendasAtuais().add(new ItemVenda(num,Prefix, selecionado.getSessao(), selecionado.getPeca(), selecionado.getVenda().getId()));
+        });
+
+        Controller.setCurrentState(selecionado);
+
+
         NavigationController.switchToTela("/Confirmar.fxml", event,
                 (ConfirmarController controller) -> controller.setTotal(total));
     }

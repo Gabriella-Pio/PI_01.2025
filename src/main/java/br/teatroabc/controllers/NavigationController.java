@@ -13,7 +13,6 @@ import java.util.function.Consumer;
 import java.util.logging.Logger;
 
 public class NavigationController {
-    private static final Logger LOGGER = Logger.getLogger(NavigationController.class.getName());
     private static final Stack<Scene> screenHistory = new Stack<>();
     private static final int HISTORY_LIMIT = 10;
 
@@ -30,9 +29,8 @@ public class NavigationController {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(previousScene);
             stage.show();
-            LOGGER.info("Returned to previous scene.");
         } else {
-            LOGGER.warning("No previous scene in history.");
+            return;
         }
     }
 
@@ -62,9 +60,7 @@ public class NavigationController {
             stage.setFullScreen(fullScreen);
             stage.show();
 
-            LOGGER.info("Switched to " + fxmlPath);
         } catch (IOException e) {
-            LOGGER.severe("Error switching to " + fxmlPath + ": " + e.getMessage());
             e.printStackTrace();
         }
     }

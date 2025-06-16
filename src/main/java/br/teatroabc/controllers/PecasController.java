@@ -1,5 +1,6 @@
 package br.teatroabc.controllers;
 
+import br.teatroabc.utils.State;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -50,6 +51,10 @@ public class PecasController {
     private void handleCardClick(Event event) {
         Node source = (Node) event.getSource();
         String cardId = source.getId(); // Recupera o fx:id do card clicado
+
+        State selecionar = Controller.getCurrentState();
+        selecionar.setPeca(String.valueOf(pecasDetalhesMap.get(cardId).getTitulo()));
+        Controller.setCurrentState(selecionar);
 
         switch (cardId) {
             case "peca1":

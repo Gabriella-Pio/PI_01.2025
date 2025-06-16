@@ -5,6 +5,10 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 
+
+// Peça mais / menos vendida
+// Peça mais / menos lucrativa - total
+
 public class EstatisticasPecasController {
 
     @FXML

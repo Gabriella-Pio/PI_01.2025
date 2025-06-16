@@ -1,5 +1,7 @@
 package br.teatroabc.controllers;
 
+import br.teatroabc.utils.CSVUtils;
+import br.teatroabc.utils.GeneralUse;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -37,10 +40,20 @@ public class MeusIngressosController {
     }
 
     @FXML
-    private void buscarIngressos() {
+    private void buscarIngressos() throws IOException {
         String cpf = cpfField.getText();
         LocalDate data = dateNascimento.getValue();
 
+
+        if (!GeneralUse.isCPFValid(cpf)) {
+            // Exibe alerta de erro
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro na Compra");
+            alert.setHeaderText("CPF inválido");
+            alert.setContentText("Por favor, informe CPF Válido");
+            alert.showAndWait();
+            return;
+        }
         if (cpf.isEmpty() || data == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Campos obrigatórios");
@@ -65,8 +78,8 @@ public class MeusIngressosController {
         }
     }
 
-    private List<String> buscarIngressosPorCPFData(String cpf, LocalDate data) {
-        // Substitua pelo método de busca real no banco de dados
+    private List<String> buscarIngressosPorCPFData(String cpf, LocalDate data) throws IOException {
+
         return List.of("Peça 1 - 20/06/2025", "Peça 2 - 25/06/2025");
     }
 
